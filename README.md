@@ -1,5 +1,7 @@
 # NessusToReport
-这是一个nessus自动报告生成工具，可以用来自动生成nessus扫描器的中文报告
+这是一个nessus自动报告生成工具，可以用来自动生成nessus扫描器的中文报告--NessusToReport,
+
+GitHub:`https://github.com/Hypdncy/NessusToReport`
 
 *版权所有，侵权必究*
 
@@ -41,7 +43,14 @@ python main.py # 默认主机扫描报告
 
 > 配置出错
 
-出错的时候一般都是漏洞信息不再数据库中也不在config.py中，这时不存在的漏洞信息将会自动dump到errors.json中,各位可以将该信息手动提交到updatedb.txt中，我将更新其到数据库中。非常感谢！
+出错的时候一般都是漏洞信息不再数据库中也不在config.py中，这时不存在的漏洞信息将会自动dump到errors.json中,
+
+可以翻译该文件中的字符串，并将其更新到config.py的nessus_vuln_self中
+
+## 更新
+
+1. 项目不定期发布漏洞库vuln.db，在release中可以下载，并替换到./cnf/目录下
+2. 各位可以将errors.json中的信息写到到updatedb.txt中，并且push到github，我将会翻译并将其更新其到数据库中
 
 ## 演示图
 

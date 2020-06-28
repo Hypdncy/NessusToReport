@@ -52,6 +52,16 @@ config = {
 # 配置忽略的漏洞ID
 ignores = []
 
+# 自定义漏洞信息，ID:info
 nessus_vuln_self = {
-
+    # 举个栗子
+    # "18405": {
+    #     "name_en": "Microsoft Windows Remote Desktop Protocol Server Man-in-the-Middle Weakness",
+    #     "name_cn": "微软Windows远程桌面协议服务器中间人攻击漏洞",
+    #     "risk_lev": "中危",
+    #     "describe": "Microsoft Windows远程桌面协议的实现在处理密钥的交换时存在漏洞，远程攻击者可能利用此漏洞窃取服务器的加密密钥。 起因是尽管通过网络传输的信息已经过加密，但在建立会话的加密密钥时没有核实服务器的身份，导致攻击者可以获得密钥，计算出有效的签名，然后发动中间人攻击。成功利用这个漏洞的攻击者可以完全控制连接在服务器上的客户端。",
+    #     "solution": "[1]如果支持的话，RDP使用SSL作为传输层 [2]“只允许使用网络级身份验证的电脑运行远程桌面建立连接”设置为启用",
+    #     "cve": "",
+    #     "plugin_id": 18405
+    # },
 }
