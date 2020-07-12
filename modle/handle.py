@@ -31,6 +31,7 @@
 import logging
 import platform
 from modle.data_loops import DataLoopholes
+from modle.data_modify import DataModify
 from modle.data_gen import DataGen
 from modle.docx_draw_host import DocxDrawHost
 from modle.docx_sub import DocxSub
@@ -57,6 +58,9 @@ class Handle(object):
         """
         logging.info("开始读取数据")
         DataLoopholes()
+
+        logging.info("开始修改数据")
+        DataModify()
 
         logging.info("开始生成数据")
         DataGen()

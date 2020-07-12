@@ -36,16 +36,17 @@ datetime_cn = datetime.now(china_tz)
 def_default = {
     # "date": "%Y-%m-%d",不填写即为默认
     "date": {
-        # 年
+        # 年, "2020"
         "year": datetime_cn.strftime('%Y'),
-        # 月
+        # 月, "07"
         "month": datetime_cn.strftime('%m'),
-        # 日
+        # 日, "07"
         "day": datetime_cn.strftime('%d'),
-        # 起始日期
+        # 起始日期, "2020-07-07"
         "start": datetime_cn.strftime('%Y-%m-%d'),
-        # 截止日期
+        # 截止日期, "2020-07-07"
         "end": datetime_cn.strftime('%Y-%m-%d'),
+        # 以下为web扫描专用
         "prepare": "0.1",
         "execute": "0.7",
         "compile": "0.1",

@@ -39,13 +39,13 @@ from untils.exception import PluginIdError
 from untils.untils import sub_text_split, JsonSerilize
 
 from modle.loophole_host import LoopholeHost
-
+from modle.translate import Translate
 from cnf.const import vuln_db_info, vuln_db_file, nessus_csv_dir, nessus_csv_order, risk_is_loop_range_en, vuln_info, \
     loops_file
 from cnf.default import def_ignores
 from cnf.data import webscan_loops, hostscan_loops, humanscan_loops, cnf_data
 
-from config import nessus_vuln_self, ignores
+from config import nessus_vuln_self, nessus_ignore_ids, translate_status
 
 
 class DataLoopholes(object):
@@ -99,14 +99,14 @@ class DataLoopholes(object):
         :return:
         """
         plugin_id = str(row[nessus_csv_order["plugin_id"]])
-        return (plugin_id in def_ignores) | (plugin_id in ignores)
+        return (plugin_id in def_ignores) | (plugin_id in nessus_ignore_ids)
 
     def _is_loop(self, row):
         res = 0
         plugin_id = str(row[nessus_csv_order["plugin_id"]])
         if plugin_id != "Plugin ID":
-            if plugin_id in self.plugin_ids_config or plugin_id in self.plugin_ids_db or row[
-                nessus_csv_order["risk_lev"]] in risk_is_loop_range_en:
+            if plugin_id in self.plugin_ids_config or plugin_id in self.plugin_ids_db or \
+                    row[nessus_csv_order["risk_lev"]] in risk_is_loop_range_en:
                 res = 1
             if self._is_ignores(row):
                 res = 0
@@ -195,7 +195,12 @@ class DataLoopholes(object):
         logging.info("漏洞总数：{0}".format(len(plugin_ids_nessus)))
         if out_plugin_ids:
             self._dumps_errors(out_plugin_ids)
-            raise PluginIdError(out_plugin_ids)
+            if translate_status:
+                tran = Translate()
+                for out_plugin_id in out_plugin_ids:
+                    tran.translate_loop(out_plugin_id, hostscan_loops[out_plugin_id])
+            else:
+                raise PluginIdError(out_plugin_ids)
 
         self._dumps_loops()
 

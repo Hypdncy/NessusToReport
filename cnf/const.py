@@ -115,3 +115,10 @@ risk_describe = {
             "共发现安全漏洞{risk_count}个,存在的安全隐患主要包括{risk_includes}等安全漏洞,详情见如下章节。"
     }
 }
+# 翻译风险等级
+translate_risk = {
+    "Critical": "紧急",
+    "High": "高危",
+    "Medium": "中危",
+    "Low": "低危"
+}

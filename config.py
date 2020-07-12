@@ -50,7 +50,10 @@ config = {
 }
 
 # 配置忽略的漏洞ID
-ignores = []
+nessus_ignore_ids = [
+    # 举个栗子
+    # "0000", "0001"
+]
 
 # 自定义漏洞信息，ID:info
 nessus_vuln_self = {
@@ -65,3 +68,31 @@ nessus_vuln_self = {
     #     "plugin_id": 18405
     # },
 }
+
+nessus_risk_self = {
+    "紧急": [
+
+    ],
+    "高危": [
+
+    ],
+    "中危": [
+
+    ],
+    "低危": [
+        # javascript漏洞系列
+        "18405",
+    ],
+}
+
+
+# 是否开启翻译功能，True or False
+translate_status = True
+# 翻译功能使用的API:baidu or youdao
+translate_api = "baidu"
+# 开启翻译功能后配置以下信息
+translate_url = 'http://api.fanyi.baidu.com/api/trans/vip/translate'
+# 翻译api的应用id
+translate_appid = '00000000000000000'
+# 翻译api的秘钥
+translate_secret = 'xxxxxxxxxxxxxxxxxxxx'
