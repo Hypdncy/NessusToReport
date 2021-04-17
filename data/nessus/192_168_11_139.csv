@@ -1,5 +1,5 @@
 Plugin ID,CVE,CVSS,Risk,Host,Protocol,Port,Name,Synopsis,Description,Solution,See Also,Plugin Output
-10114,CVE-1999-0524,0,None,192.168.11.139,icmp,0,ICMP Timestamp Request Remote Date Disclosure,It is possible to determine the exact time set on the remote host.,"The remote host answers to an ICMP timestamp request.  This allows an
+10114,CVE-1999-0524,0,None,192.168.1.1,icmp,0,ICMP Timestamp Request Remote Date Disclosure,It is possible to determine the exact time set on the remote host.,"The remote host answers to an ICMP timestamp request.  This allows an
 attacker to know the date that is set on the targeted machine, which
 may assist an unauthenticated, remote attacker in defeating time-based
 authentication protocols.
@@ -11,7 +11,7 @@ timestamp replies (14).",,"This host returns non-standard timestamps (high bit i
 The ICMP timestamps might be in little endian format (not in network format)
 The difference between the local and remote clocks is -170 seconds.
 "
-10150,,,None,192.168.11.139,udp,137,Windows NetBIOS / SMB Remote Host Information Disclosure,It was possible to obtain the network name of the remote host.,"The remote host is listening on UDP port 137 or TCP port 445, and
+10150,,,None,192.168.1.1,udp,137,Windows NetBIOS / SMB Remote Host Information Disclosure,It was possible to obtain the network name of the remote host.,"The remote host is listening on UDP port 137 or TCP port 445, and
 replies to NetBIOS nbtscan or SMB requests.
 
 Note that this plugin gathers information to be used in other plugins,
@@ -27,13 +27,13 @@ but does not itself generate a report.",n/a,,"The following 6 NetBIOS names have
 The remote host has the following MAC address on its adapter :
 
    00:0c:29:e5:6e:5c"
-10287,,,None,192.168.11.139,udp,0,Traceroute Information,It was possible to obtain traceroute information.,Makes a traceroute to the remote host.,n/a,,"For your information, here is the traceroute from 192.168.11.1 to 192.168.11.139 : 
+10287,,,None,192.168.1.1,udp,0,Traceroute Information,It was possible to obtain traceroute information.,Makes a traceroute to the remote host.,n/a,,"For your information, here is the traceroute from 192.168.11.1 to 192.168.1.1 : 
 192.168.11.1
-192.168.11.139
+192.168.1.1
 
 Hop Count: 1
 "
-10394,,,None,192.168.11.139,tcp,445,Microsoft Windows SMB Log In Possible,It was possible to log into the remote host.,"The remote host is running a Microsoft Windows operating system or
+10394,,,None,192.168.1.1,tcp,445,Microsoft Windows SMB Log In Possible,It was possible to log into the remote host.,"The remote host is running a Microsoft Windows operating system or
 Samba, a CIFS/SMB server for Unix. It was possible to log into it
 using one of the following accounts :
 
@@ -41,7 +41,7 @@ using one of the following accounts :
 - Guest account
 - Supplied credentials",n/a,"http://www.nessus.org/u?5c2589f6
 https://support.microsoft.com/en-us/help/246261",#NAME?
-10736,,,None,192.168.11.139,tcp,135,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
+10736,,,None,192.168.1.1,tcp,135,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
 PIPE) it was possible to enumerate the Distributed Computing
 Environment (DCE) services running on the remote port. Using this
 information it is possible to connect and bind to each service by
@@ -652,7 +652,7 @@ Type : Local RPC service
 Named pipe : OLE4A4593D923264937AD5E7CF6A818
 
 "
-10736,,,None,192.168.11.139,tcp,445,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
+10736,,,None,192.168.1.1,tcp,445,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
 PIPE) it was possible to enumerate the Distributed Computing
 Environment (DCE) services running on the remote port. Using this
 information it is possible to connect and bind to each service by
@@ -831,7 +831,7 @@ Named pipe : \pipe\eventlog
 Netbios name : \\WIN-UQA7NBQPU3C
 
 "
-10736,,,None,192.168.11.139,tcp,49152,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
+10736,,,None,192.168.1.1,tcp,49152,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
 PIPE) it was possible to enumerate the Distributed Computing
 Environment (DCE) services running on the remote port. Using this
 information it is possible to connect and bind to each service by
@@ -843,10 +843,10 @@ UUID : d95afe70-a6d5-4259-822e-2c84da1ddb0d, version 1.0
 Description : Unknown RPC service
 Type : Remote RPC service
 TCP Port : 49152
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 "
-10736,,,None,192.168.11.139,tcp,49153,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
+10736,,,None,192.168.1.1,tcp,49153,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
 PIPE) it was possible to enumerate the Distributed Computing
 Environment (DCE) services running on the remote port. Using this
 information it is possible to connect and bind to each service by
@@ -859,7 +859,7 @@ Description : Unknown RPC service
 Annotation : Event log TCPIP
 Type : Remote RPC service
 TCP Port : 49153
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 Object UUID : 00000000-0000-0000-0000-000000000000
 UUID : 30adc50c-5cbc-46ce-9a0e-91914789e23c, version 1.0
@@ -867,7 +867,7 @@ Description : Unknown RPC service
 Annotation : NRP server endpoint
 Type : Remote RPC service
 TCP Port : 49153
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 Object UUID : 00000000-0000-0000-0000-000000000000
 UUID : 3c4728c5-f0ab-448b-bda1-6ce01eb0a6d6, version 1.0
@@ -875,7 +875,7 @@ Description : Unknown RPC service
 Annotation : DHCPv6 Client LRPC Endpoint
 Type : Remote RPC service
 TCP Port : 49153
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 Object UUID : 00000000-0000-0000-0000-000000000000
 UUID : 3c4728c5-f0ab-448b-bda1-6ce01eb0a6d5, version 1.0
@@ -884,7 +884,7 @@ Windows process : svchost.exe
 Annotation : DHCP Client LRPC Endpoint
 Type : Remote RPC service
 TCP Port : 49153
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 Object UUID : 00000000-0000-0000-0000-000000000000
 UUID : 06bba54a-be05-49f9-b0a0-30f790261023, version 1.0
@@ -892,10 +892,10 @@ Description : Unknown RPC service
 Annotation : Security Center
 Type : Remote RPC service
 TCP Port : 49153
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 "
-10736,,,None,192.168.11.139,tcp,49154,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
+10736,,,None,192.168.1.1,tcp,49154,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
 PIPE) it was possible to enumerate the Distributed Computing
 Environment (DCE) services running on the remote port. Using this
 information it is possible to connect and bind to each service by
@@ -907,7 +907,7 @@ UUID : 86d35949-83c9-4044-b424-db363231fd0c, version 1.0
 Description : Unknown RPC service
 Type : Remote RPC service
 TCP Port : 49154
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 Object UUID : 00000000-0000-0000-0000-000000000000
 UUID : 552d076a-cb29-4e44-8b6a-d15e59e2c0af, version 1.0
@@ -915,7 +915,7 @@ Description : Unknown RPC service
 Annotation : IP Transition Configuration endpoint
 Type : Remote RPC service
 TCP Port : 49154
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 Object UUID : 00000000-0000-0000-0000-000000000000
 UUID : 98716d03-89ac-44c7-bb8c-285824e51c4a, version 1.0
@@ -923,7 +923,7 @@ Description : Unknown RPC service
 Annotation : XactSrv service
 Type : Remote RPC service
 TCP Port : 49154
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 Object UUID : 00000000-0000-0000-0000-000000000000
 UUID : a398e520-d59a-4bdd-aa7a-3c1e0303a511, version 1.0
@@ -931,7 +931,7 @@ Description : Unknown RPC service
 Annotation : IKE/Authip API
 Type : Remote RPC service
 TCP Port : 49154
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 Object UUID : 73736573-6f69-656e-6e76-000000000000
 UUID : c9ac6db5-82b7-4e55-ae8a-e464ed7b4277, version 1.0
@@ -939,17 +939,17 @@ Description : Unknown RPC service
 Annotation : Impl friendly name
 Type : Remote RPC service
 TCP Port : 49154
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 Object UUID : 00000000-0000-0000-0000-000000000000
 UUID : 30b044a5-a225-43f0-b3a4-e060df91f9c1, version 1.0
 Description : Unknown RPC service
 Type : Remote RPC service
 TCP Port : 49154
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 "
-10736,,,None,192.168.11.139,tcp,49155,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
+10736,,,None,192.168.1.1,tcp,49155,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
 PIPE) it was possible to enumerate the Distributed Computing
 Environment (DCE) services running on the remote port. Using this
 information it is possible to connect and bind to each service by
@@ -962,10 +962,10 @@ Description : Security Account Manager
 Windows process : lsass.exe
 Type : Remote RPC service
 TCP Port : 49155
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 "
-10736,,,None,192.168.11.139,tcp,49156,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
+10736,,,None,192.168.1.1,tcp,49156,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
 PIPE) it was possible to enumerate the Distributed Computing
 Environment (DCE) services running on the remote port. Using this
 information it is possible to connect and bind to each service by
@@ -978,10 +978,10 @@ Description : Service Control Manager
 Windows process : svchost.exe
 Type : Remote RPC service
 TCP Port : 49156
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 "
-10736,,,None,192.168.11.139,tcp,49159,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
+10736,,,None,192.168.1.1,tcp,49159,DCE Services Enumeration,A DCE/RPC service is running on the remote host.,"By sending a Lookup request to the portmapper (TCP 135 or epmapper
 PIPE) it was possible to enumerate the Distributed Computing
 Environment (DCE) services running on the remote port. Using this
 information it is possible to connect and bind to each service by
@@ -994,7 +994,7 @@ Description : Unknown RPC service
 Annotation : Remote Fw APIs
 Type : Remote RPC service
 TCP Port : 49159
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 Object UUID : 00000000-0000-0000-0000-000000000000
 UUID : 12345678-1234-abcd-ef00-0123456789ab, version 1.0
@@ -1003,10 +1003,10 @@ Windows process : lsass.exe
 Annotation : IPSec Policy agent endpoint
 Type : Remote RPC service
 TCP Port : 49159
-IP : 192.168.11.139
+IP : 192.168.1.1
 
 "
-10785,,,None,192.168.11.139,tcp,445,Microsoft Windows SMB NativeLanManager Remote System Information Disclosure,"It was possible to obtain information about the remote operating
+10785,,,None,192.168.1.1,tcp,445,Microsoft Windows SMB NativeLanManager Remote System Information Disclosure,"It was possible to obtain information about the remote operating
 system.","Nessus was able to obtain the remote operating system name and version
 (Windows and/or Samba) by sending an authentication request to port
 139 or 445. Note that this plugin requires SMB1 to be enabled on the
@@ -1014,7 +1014,7 @@ host.",n/a,,"The remote Operating System is : Windows 7 Ultimate 7601 Service Pa
 The remote native LAN manager is : Windows 7 Ultimate 6.1
 The remote SMB Domain Name is : WIN-UQA7NBQPU3C
 "
-10863,,,None,192.168.11.139,tcp,3389,SSL Certificate Information,This plugin displays the SSL certificate.,"This plugin connects to every SSL-related port and attempts to 
+10863,,,None,192.168.1.1,tcp,3389,SSL Certificate Information,This plugin displays the SSL certificate.,"This plugin connects to every SSL-related port and attempts to 
 extract and dump the X.509 certificate.",n/a,,"Subject Name: 
 
 Common Name: WIN-UQA7NBQPU3C
@@ -1084,7 +1084,7 @@ SHA-1 Fingerprint: A7 AB AE B3 8E 58 3D F2 D9 FF 18 D3 68 1F FD DA 6F 1E 0C C0
 MD5 Fingerprint: EF BC 47 9D 47 49 8A DE C1 12 93 4F 82 F6 02 66 
 
 "
-10919,,,None,192.168.11.139,tcp,0,Open Port Re-check,Previously open ports are now closed.,"One of several ports that were previously open are now closed or
+10919,,,None,192.168.1.1,tcp,0,Open Port Re-check,Previously open ports are now closed.,"One of several ports that were previously open are now closed or
 unresponsive.
 
 There are several possible reasons for this :
@@ -1112,7 +1112,7 @@ This might be an availability problem related to the following :
 In any case, the audit of the remote host might be incomplete and may
 need to be done again.",#NAME?,,"Port 554 was detected as being open but is now closed
 "
-10940,,,None,192.168.11.139,tcp,3389,Windows Terminal Services Enabled,The remote Windows host has Terminal Services enabled.,"Terminal Services allows a Windows user to remotely obtain a graphical
+10940,,,None,192.168.1.1,tcp,3389,Windows Terminal Services Enabled,The remote Windows host has Terminal Services enabled.,"Terminal Services allows a Windows user to remotely obtain a graphical
 login (and therefore act as a local user on the remote host).
 
 If an attacker gains a valid login and password, this service could be
@@ -1124,62 +1124,62 @@ Note that RDP (the Remote Desktop Protocol) is vulnerable to
 Man-in-the-middle attacks, making it easy for attackers to steal the
 credentials of legitimate users by impersonating the Windows server.","Disable Terminal Services if you do not use it, and do not allow this
 service to run across the Internet.",,
-11011,,,None,192.168.11.139,tcp,139,Microsoft Windows SMB Service Detection,A file / print sharing service is listening on the remote host.,"The remote service understands the CIFS (Common Internet File System)
+11011,,,None,192.168.1.1,tcp,139,Microsoft Windows SMB Service Detection,A file / print sharing service is listening on the remote host.,"The remote service understands the CIFS (Common Internet File System)
 or Server Message Block (SMB) protocol, used to provide shared access
 to files, printers, etc between nodes on a network.",n/a,,"
 An SMB server is running on this port.
 "
-11011,,,None,192.168.11.139,tcp,445,Microsoft Windows SMB Service Detection,A file / print sharing service is listening on the remote host.,"The remote service understands the CIFS (Common Internet File System)
+11011,,,None,192.168.1.1,tcp,445,Microsoft Windows SMB Service Detection,A file / print sharing service is listening on the remote host.,"The remote service understands the CIFS (Common Internet File System)
 or Server Message Block (SMB) protocol, used to provide shared access
 to files, printers, etc between nodes on a network.",n/a,,"
 A CIFS server is running on this port.
 "
-11153,,,None,192.168.11.139,tcp,2869,Service Detection (HELP Request),The remote service could be identified.,"It was possible to identify the remote service by its banner or by
+11153,,,None,192.168.1.1,tcp,2869,Service Detection (HELP Request),The remote service could be identified.,"It was possible to identify the remote service by its banner or by
 looking at the error message it sends when it receives a 'HELP'
 request.",n/a,,A web server seems to be running on this port.
-11219,,,None,192.168.11.139,tcp,135,Nessus SYN scanner,It is possible to determine which TCP ports are open.,"This plugin is a SYN 'half-open' port scanner.  It shall be reasonably
+11219,,,None,192.168.1.1,tcp,135,Nessus SYN scanner,It is possible to determine which TCP ports are open.,"This plugin is a SYN 'half-open' port scanner.  It shall be reasonably
 quick even against a firewalled target. 
 
 Note that SYN scans are less intrusive than TCP (full connect) scans
 against broken services, but they might cause problems for less robust
 firewalls and also leave unclosed connections on the remote target, if
 the network is loaded.",Protect your target with an IP filter.,,Port 135/tcp was found to be open
-11219,,,None,192.168.11.139,tcp,139,Nessus SYN scanner,It is possible to determine which TCP ports are open.,"This plugin is a SYN 'half-open' port scanner.  It shall be reasonably
+11219,,,None,192.168.1.1,tcp,139,Nessus SYN scanner,It is possible to determine which TCP ports are open.,"This plugin is a SYN 'half-open' port scanner.  It shall be reasonably
 quick even against a firewalled target. 
 
 Note that SYN scans are less intrusive than TCP (full connect) scans
 against broken services, but they might cause problems for less robust
 firewalls and also leave unclosed connections on the remote target, if
 the network is loaded.",Protect your target with an IP filter.,,Port 139/tcp was found to be open
-11219,,,None,192.168.11.139,tcp,445,Nessus SYN scanner,It is possible to determine which TCP ports are open.,"This plugin is a SYN 'half-open' port scanner.  It shall be reasonably
+11219,,,None,192.168.1.1,tcp,445,Nessus SYN scanner,It is possible to determine which TCP ports are open.,"This plugin is a SYN 'half-open' port scanner.  It shall be reasonably
 quick even against a firewalled target. 
 
 Note that SYN scans are less intrusive than TCP (full connect) scans
 against broken services, but they might cause problems for less robust
 firewalls and also leave unclosed connections on the remote target, if
 the network is loaded.",Protect your target with an IP filter.,,Port 445/tcp was found to be open
-11219,,,None,192.168.11.139,tcp,554,Nessus SYN scanner,It is possible to determine which TCP ports are open.,"This plugin is a SYN 'half-open' port scanner.  It shall be reasonably
+11219,,,None,192.168.1.1,tcp,554,Nessus SYN scanner,It is possible to determine which TCP ports are open.,"This plugin is a SYN 'half-open' port scanner.  It shall be reasonably
 quick even against a firewalled target. 
 
 Note that SYN scans are less intrusive than TCP (full connect) scans
 against broken services, but they might cause problems for less robust
 firewalls and also leave unclosed connections on the remote target, if
 the network is loaded.",Protect your target with an IP filter.,,Port 554/tcp was found to be open
-11219,,,None,192.168.11.139,tcp,2869,Nessus SYN scanner,It is possible to determine which TCP ports are open.,"This plugin is a SYN 'half-open' port scanner.  It shall be reasonably
+11219,,,None,192.168.1.1,tcp,2869,Nessus SYN scanner,It is possible to determine which TCP ports are open.,"This plugin is a SYN 'half-open' port scanner.  It shall be reasonably
 quick even against a firewalled target. 
 
 Note that SYN scans are less intrusive than TCP (full connect) scans
 against broken services, but they might cause problems for less robust
 firewalls and also leave unclosed connections on the remote target, if
 the network is loaded.",Protect your target with an IP filter.,,Port 2869/tcp was found to be open
-11219,,,None,192.168.11.139,tcp,3389,Nessus SYN scanner,It is possible to determine which TCP ports are open.,"This plugin is a SYN 'half-open' port scanner.  It shall be reasonably
+11219,,,None,192.168.1.1,tcp,3389,Nessus SYN scanner,It is possible to determine which TCP ports are open.,"This plugin is a SYN 'half-open' port scanner.  It shall be reasonably
 quick even against a firewalled target. 
 
 Note that SYN scans are less intrusive than TCP (full connect) scans
 against broken services, but they might cause problems for less robust
 firewalls and also leave unclosed connections on the remote target, if
 the network is loaded.",Protect your target with an IP filter.,,Port 3389/tcp was found to be open
-11936,,,None,192.168.11.139,tcp,0,OS Identification,It is possible to guess the remote operating system.,"Using a combination of remote probes (e.g., TCP/IP, SMB, HTTP, NTP,
+11936,,,None,192.168.1.1,tcp,0,OS Identification,It is possible to guess the remote operating system.,"Using a combination of remote probes (e.g., TCP/IP, SMB, HTTP, NTP,
 SNMP, etc.), it is possible to guess the name of the remote operating
 system in use. It is also possible sometimes to guess the version of
 the operating system.",n/a,,"
@@ -1205,11 +1205,11 @@ a7abaeb38e583df2d9ff18d3681ffdda6f1e0cc0
 
  
 The remote host is running Microsoft Windows 7 Ultimate"
-12053,,,None,192.168.11.139,tcp,0,Host Fully Qualified Domain Name (FQDN) Resolution,It was possible to resolve the name of the remote host.,"Nessus was able to resolve the fully qualified domain name (FQDN) of
+12053,,,None,192.168.1.1,tcp,0,Host Fully Qualified Domain Name (FQDN) Resolution,It was possible to resolve the name of the remote host.,"Nessus was able to resolve the fully qualified domain name (FQDN) of
 the remote host.",n/a,,"
-192.168.11.139 resolves as WIN-UQA7NBQPU3C.
+192.168.1.1 resolves as WIN-UQA7NBQPU3C.
 "
-18405,CVE-2005-1794,5.1,Medium,192.168.11.139,tcp,3389,Microsoft Windows Remote Desktop Protocol Server Man-in-the-Middle Weakness,It may be possible to get access to the remote host.,"The remote version of the Remote Desktop Protocol Server (Terminal
+18405,CVE-2005-1794,5.1,Medium,192.168.1.1,tcp,3389,Microsoft Windows Remote Desktop Protocol Server Man-in-the-Middle Weakness,It may be possible to get access to the remote host.,"The remote version of the Remote Desktop Protocol Server (Terminal
 Service) is vulnerable to a man-in-the-middle (MiTM) attack. The RDP 
 client makes no effort to validate the identity of the server when 
 setting up encryption. An attacker with the ability to intercept 
@@ -1228,7 +1228,7 @@ supported, or/and
 Desktop with Network Level Authentication' setting if it is available.","http://www.oxid.it/downloads/rdp-gbu.pdf
 http://www.nessus.org/u?8033da0d
 http://technet.microsoft.com/en-us/library/cc782610.aspx",
-19506,,,None,192.168.11.139,tcp,0,Nessus Scan Information,This plugin displays information about the Nessus scan.,"This plugin displays, for each tested host, information about the
+19506,,,None,192.168.1.1,tcp,0,Nessus Scan Information,This plugin displays information about the Nessus scan.,"This plugin displays, for each tested host, information about the
 scan itself :
 
   - The version of the plugin set.
@@ -1275,12 +1275,12 @@ Allow post-scan editing: Yes
 Scan Start Date : 2020/6/17 15:19 China Standard Time
 Scan duration : 345 sec
 "
-20094,,,None,192.168.11.139,tcp,0,VMware Virtual Machine Detection,The remote host is a VMware virtual machine.,"According to the MAC address of its network adapter, the remote host
+20094,,,None,192.168.1.1,tcp,0,VMware Virtual Machine Detection,The remote host is a VMware virtual machine.,"According to the MAC address of its network adapter, the remote host
 is a VMware virtual machine.","Since it is physically accessible through the network, ensure that its
 configuration matches your organization's security policy.",,"
 The remote host is a VMware virtual machine.
 "
-21643,,,None,192.168.11.139,tcp,3389,SSL Cipher Suites Supported,The remote service encrypts communications using SSL.,"This plugin detects which SSL ciphers are supported by the remote
+21643,,,None,192.168.1.1,tcp,3389,SSL Cipher Suites Supported,The remote service encrypts communications using SSL.,"This plugin detects which SSL ciphers are supported by the remote
 service for encrypting communications.",n/a,"https://www.openssl.org/docs/man1.1.0/apps/ciphers.html
 http://www.nessus.org/u?3a040ada","
 Here is the list of SSL ciphers supported by the remote server :
@@ -1317,7 +1317,7 @@ The fields above are :
 Note that this service does not encrypt traffic by default but does
 support upgrading to an encrypted connection using STARTTLS.
 "
-24786,,,None,192.168.11.139,tcp,0,Nessus Windows Scan Not Performed with Admin Privileges,"The Nessus scan of this host may be incomplete due to insufficient
+24786,,,None,192.168.1.1,tcp,0,Nessus Windows Scan Not Performed with Admin Privileges,"The Nessus scan of this host may be incomplete due to insufficient
 privileges provided.","The Nessus scanner testing the remote host has been given SMB
 credentials to log into the remote host, however these credentials do
 not have administrative privileges. 
@@ -1335,24 +1335,24 @@ patches can be detected through the registry).","Reconfigure your scanner to use
 privileges.",,"
 It was not possible to connect to '\\WIN-UQA7NBQPU3C\ADMIN$' with the supplied credentials.
 "
-25220,,,None,192.168.11.139,tcp,0,TCP/IP Timestamps Supported,The remote service implements TCP timestamps.,"The remote host implements TCP timestamps, as defined by RFC1323.  A
+25220,,,None,192.168.1.1,tcp,0,TCP/IP Timestamps Supported,The remote service implements TCP timestamps.,"The remote host implements TCP timestamps, as defined by RFC1323.  A
 side effect of this feature is that the uptime of the remote host can
 sometimes be computed.",n/a,http://www.ietf.org/rfc/rfc1323.txt,
-26917,,,None,192.168.11.139,tcp,445,Microsoft Windows SMB Registry : Nessus Cannot Access the Windows Registry,Nessus is not able to access the remote Windows Registry.,"It was not possible to connect to PIPE\winreg on the remote host.
+26917,,,None,192.168.1.1,tcp,445,Microsoft Windows SMB Registry : Nessus Cannot Access the Windows Registry,Nessus is not able to access the remote Windows Registry.,"It was not possible to connect to PIPE\winreg on the remote host.
 
 If you intend to use Nessus to perform registry-based checks, the
 registry checks will not work because the 'Remote Registry Access'
 service (winreg) has been disabled on the remote host or can not be
 connected to with the supplied credentials.",n/a,,"Could not connect to the registry because:
 Could not connect to \winreg"
-30218,,2.6,Low,192.168.11.139,tcp,3389,Terminal Services Encryption Level is not FIPS-140 Compliant,The remote host is not FIPS-140 compliant.,"The encryption setting used by the remote Terminal Services service
+30218,,2.6,Low,192.168.1.1,tcp,3389,Terminal Services Encryption Level is not FIPS-140 Compliant,The remote host is not FIPS-140 compliant.,"The encryption setting used by the remote Terminal Services service
 is not FIPS-140 compliant.","Change RDP encryption level to :
 
  4. FIPS Compliant",,"
 The terminal services encryption level is set to :
 
 2. Medium (Client Compatible)"
-35291,CVE-2004-2761,5,Medium,192.168.11.139,tcp,3389,SSL Certificate Signed Using Weak Hashing Algorithm,"An SSL certificate in the certificate chain has been signed using a
+35291,CVE-2004-2761,5,Medium,192.168.1.1,tcp,3389,SSL Certificate Signed Using Weak Hashing Algorithm,"An SSL certificate in the certificate chain has been signed using a
 weak hash algorithm.","The remote service uses an SSL certificate chain that has been signed
 using a cryptographically weak hashing algorithm (e.g. MD2, MD4, MD5,
 or SHA1). These signature algorithms are known to be vulnerable to
@@ -1380,7 +1380,7 @@ the remote host, but contain hashes that are considered to be weak.
 |-Valid From          : Jun 16 07:13:24 2020 GMT
 |-Valid To            : Dec 16 07:13:24 2020 GMT
 "
-35711,,,None,192.168.11.139,udp,1900,Universal Plug and Play (UPnP) Protocol Detection,The remote device supports UPnP.,"The remote device answered an SSDP M-SEARCH request. Therefore, it
+35711,,,None,192.168.1.1,udp,1900,Universal Plug and Play (UPnP) Protocol Detection,The remote device supports UPnP.,"The remote device answered an SSDP M-SEARCH request. Therefore, it
 supports 'Universal Plug and Play' (UPnP). This protocol provides
 automatic configuration and device discovery. It is primarily intended
 for home networks. An attacker could potentially leverage this to
@@ -1388,7 +1388,7 @@ discover your network architecture.",Filter access to this port if desired.,"htt
 https://en.wikipedia.org/wiki/Simple_Service_Discovery_Protocol
 http://quimby.gnus.org/internet-drafts/draft-cai-ssdp-v1-03.txt","The device responded to an SSDP M-SEARCH request with the following locations :
 
-    http://192.168.11.139:2869/upnphost/udhisapi.dll?content=uuid:1bbcbe8f-1b5b-4315-8e1e-98666705f2a5
+    http://192.168.1.1:2869/upnphost/udhisapi.dll?content=uuid:1bbcbe8f-1b5b-4315-8e1e-98666705f2a5
 
 And advertises these unique service names :
 
@@ -1398,10 +1398,10 @@ And advertises these unique service names :
     uuid:1bbcbe8f-1b5b-4315-8e1e-98666705f2a5::urn:schemas-upnp-org:service:ContentDirectory:1
 
 "
-35712,,,None,192.168.11.139,tcp,2869,Web Server UPnP Detection,The remote web server provides UPnP information.,"Nessus was able to extract some information about the UPnP-enabled
+35712,,,None,192.168.1.1,tcp,2869,Web Server UPnP Detection,The remote web server provides UPnP information.,"Nessus was able to extract some information about the UPnP-enabled
 device by querying this web server. Services may also be reachable
 through SOAP requests.",Filter incoming traffic to this port if desired.,https://en.wikipedia.org/wiki/Universal_Plug_and_Play,"
-Here is a summary of http://192.168.11.139:2869/upnphost/udhisapi.dll?content=uuid:1bbcbe8f-1b5b-4315-8e1e-98666705f2a5 :
+Here is a summary of http://192.168.1.1:2869/upnphost/udhisapi.dll?content=uuid:1bbcbe8f-1b5b-4315-8e1e-98666705f2a5 :
 
 deviceType: urn:schemas-upnp-org:device:MediaServer:1
 friendlyName: WIN-UQA7NBQPU3C: Inspiron-5000:
@@ -1428,14 +1428,14 @@ ServiceID: urn:microsoft.com:serviceId:X_MS_MediaReceiverRegistrar
 	eventSubURL: /upnphost/udhisapi.dll?event=uuid:1bbcbe8f-1b5b-4315-8e1e-98666705f2a5+urn:microsoft.com:serviceId:X_MS_MediaReceiverRegistrar
 	SCPDURL: /upnphost/udhisapi.dll?content=uuid:d0cb35ed-24ea-456e-8715-d458c76c32c0
 "
-35716,,,None,192.168.11.139,tcp,0,Ethernet Card Manufacturer Detection,The manufacturer can be identified from the Ethernet OUI.,"Each ethernet MAC address starts with a 24-bit Organizationally 
+35716,,,None,192.168.1.1,tcp,0,Ethernet Card Manufacturer Detection,The manufacturer can be identified from the Ethernet OUI.,"Each ethernet MAC address starts with a 24-bit Organizationally 
 Unique Identifier (OUI). These OUIs are registered by IEEE.",n/a,"https://standards.ieee.org/faqs/regauth.html
 http://www.nessus.org/u?794673b4","
 The following card manufacturers were identified :
 
 00:0C:29:E5:6E:5C : VMware, Inc.
 "
-42873,CVE-2016-2183,5,Medium,192.168.11.139,tcp,3389,SSL Medium Strength Cipher Suites Supported (SWEET32),The remote service supports the use of medium strength SSL ciphers.,"The remote host supports the use of SSL ciphers that offer medium
+42873,CVE-2016-2183,5,Medium,192.168.1.1,tcp,3389,SSL Medium Strength Cipher Suites Supported (SWEET32),The remote service supports the use of medium strength SSL ciphers.,"The remote host supports the use of SSL ciphers that offer medium
 strength encryption. Nessus regards medium strength as any encryption
 that uses key lengths at least 64 bits and less than 112 bits, or 
 else that uses the 3DES encryption suite.
@@ -1460,16 +1460,16 @@ The fields above are :
   MAC={message authentication code}
   {export flag}
 "
-43815,,,None,192.168.11.139,udp,137,NetBIOS Multiple IP Address Enumeration,The remote host is configured with multiple IP addresses.,"By sending a special NetBIOS query, Nessus was able to detect the use
+43815,,,None,192.168.1.1,udp,137,NetBIOS Multiple IP Address Enumeration,The remote host is configured with multiple IP addresses.,"By sending a special NetBIOS query, Nessus was able to detect the use
 of multiple IP addresses on the remote host.  This indicates the host
 may be running virtualization software, a VPN client, or has multiple
 network interfaces.",n/a,,"
 The remote host appears to be using the following IP addresses :
 
-  - 192.168.11.139
+  - 192.168.1.1
   - 192.168.1.106
 "
-45590,,,None,192.168.11.139,tcp,0,Common Platform Enumeration (CPE),"It was possible to enumerate CPE names that matched on the remote
+45590,,,None,192.168.1.1,tcp,0,Common Platform Enumeration (CPE),"It was possible to enumerate CPE names that matched on the remote
 system.","By using information obtained from a Nessus scan, this plugin reports
 CPE (Common Platform Enumeration) matches for various hardware and
 software products found on a host. 
@@ -1482,15 +1482,15 @@ The remote operating system matched the following CPE :
 
   cpe:/o:microsoft:windows_7:::ultimate
 "
-46215,,,None,192.168.11.139,tcp,0,Inconsistent Hostname and IP Address,The remote host's hostname is not consistent with DNS information.,"The name of this machine either does not resolve or resolves to a
+46215,,,None,192.168.1.1,tcp,0,Inconsistent Hostname and IP Address,The remote host's hostname is not consistent with DNS information.,"The name of this machine either does not resolve or resolves to a
 different IP address. 
 
 This may come from a badly configured reverse DNS or from a host file
 in use on the Nessus scanning host. 
 
 As a result, URLs in plugin output may not be directly usable in a web
-browser and some web tests may be incomplete.",Fix the reverse DNS or host file.,,"The host name 'WIN-UQA7NBQPU3C' resolves to 192.168.1.106, not to 192.168.11.139"
-51192,,6.4,Medium,192.168.11.139,tcp,3389,SSL Certificate Cannot Be Trusted,The SSL certificate for this service cannot be trusted.,"The server's X.509 certificate cannot be trusted. This situation can
+browser and some web tests may be incomplete.",Fix the reverse DNS or host file.,,"The host name 'WIN-UQA7NBQPU3C' resolves to 192.168.1.106, not to 192.168.1.1"
+51192,,6.4,Medium,192.168.1.1,tcp,3389,SSL Certificate Cannot Be Trusted,The SSL certificate for this service cannot be trusted.,"The server's X.509 certificate cannot be trusted. This situation can
 occur in three different ways, in which the chain of trust can be
 broken, as stated below :
 
@@ -1529,23 +1529,23 @@ certificate authority :
 |-Subject : CN=WIN-UQA7NBQPU3C
 |-Issuer  : CN=WIN-UQA7NBQPU3C
 "
-51891,,,None,192.168.11.139,tcp,3389,SSL Session Resume Supported,The remote host allows resuming SSL sessions.,"This script detects whether a host allows resuming SSL sessions by
+51891,,,None,192.168.1.1,tcp,3389,SSL Session Resume Supported,The remote host allows resuming SSL sessions.,"This script detects whether a host allows resuming SSL sessions by
 performing a full SSL handshake to receive a session ID, and then
 reconnecting with the previously used session ID.  If the server
 accepts the session ID in the second connection, the server maintains
 a cache of sessions that can be resumed.",n/a,,"
 This port supports resuming TLSv1 sessions.
 "
-54615,,,None,192.168.11.139,tcp,0,Device Type,It is possible to guess the remote device type.,"Based on the remote operating system, it is possible to determine
+54615,,,None,192.168.1.1,tcp,0,Device Type,It is possible to guess the remote device type.,"Based on the remote operating system, it is possible to determine
 what the remote system type is (eg: a printer, router, general-purpose
 computer, etc).",n/a,,"Remote device type : general-purpose
 Confidence level : 99
 "
-56984,,,None,192.168.11.139,tcp,3389,SSL / TLS Versions Supported,The remote service encrypts communications.,"This plugin detects which SSL and TLS versions are supported by the
+56984,,,None,192.168.1.1,tcp,3389,SSL / TLS Versions Supported,The remote service encrypts communications.,"This plugin detects which SSL and TLS versions are supported by the
 remote service for encrypting communications.",n/a,,"
 This port supports TLSv1.0.
 "
-57041,,,None,192.168.11.139,tcp,3389,SSL Perfect Forward Secrecy Cipher Suites Supported,"The remote service supports the use of SSL Perfect Forward Secrecy
+57041,,,None,192.168.1.1,tcp,3389,SSL Perfect Forward Secrecy Cipher Suites Supported,"The remote service supports the use of SSL Perfect Forward Secrecy
 ciphers, which maintain confidentiality even if the key is stolen.","The remote host supports the use of SSL ciphers that offer Perfect
 Forward Secrecy (PFS) encryption.  These cipher suites ensure that
 recorded SSL traffic cannot be broken at a future date if the server's
@@ -1571,7 +1571,7 @@ The fields above are :
   MAC={message authentication code}
   {export flag}
 "
-57582,,6.4,Medium,192.168.11.139,tcp,3389,SSL Self-Signed Certificate,"The SSL certificate chain for this service ends in an unrecognized
+57582,,6.4,Medium,192.168.1.1,tcp,3389,SSL Self-Signed Certificate,"The SSL certificate chain for this service ends in an unrecognized
 self-signed certificate.","The X.509 certificate chain for this service is not signed by a
 recognized certificate authority.  If the remote host is a public host
 in production, this nullifies the use of SSL as anyone could establish
@@ -1586,7 +1586,7 @@ found in the list of known certificate authorities :
 
 |-Subject : CN=WIN-UQA7NBQPU3C
 "
-57608,,5,Medium,192.168.11.139,tcp,445,SMB Signing not required,Signing is not required on the remote SMB server.,"Signing is not required on the remote SMB server. An unauthenticated,
+57608,,5,Medium,192.168.1.1,tcp,445,SMB Signing not required,Signing is not required on the remote SMB server.,"Signing is not required on the remote SMB server. An unauthenticated,
 remote attacker can exploit this to conduct man-in-the-middle attacks
 against the SMB server.","Enforce message signing in the host's configuration. On Windows, this
 is found in the policy setting 'Microsoft network server: Digitally
@@ -1596,7 +1596,7 @@ http://technet.microsoft.com/en-us/library/cc731957.aspx
 http://www.nessus.org/u?74b80723
 https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html
 http://www.nessus.org/u?a3cac4ea",
-57690,,4.3,Medium,192.168.11.139,tcp,3389,Terminal Services Encryption Level is Medium or Low,The remote host is using weak cryptography.,"The remote Terminal Services service is not configured to use strong
+57690,,4.3,Medium,192.168.1.1,tcp,3389,Terminal Services Encryption Level is Medium or Low,The remote host is using weak cryptography.,"The remote Terminal Services service is not configured to use strong
 cryptography. 
 
 Using weak cryptography with this service may allow an attacker to
@@ -1609,7 +1609,7 @@ and/or keystrokes.","Change RDP encryption level to one of :
 The terminal services encryption level is set to :
 
 2. Medium"
-58453,,4.3,Medium,192.168.11.139,tcp,3389,Terminal Services Doesn't Use Network Level Authentication (NLA) Only,The remote Terminal Services doesn't use Network Level Authentication only.,"The remote Terminal Services is not configured to use Network Level
+58453,,4.3,Medium,192.168.1.1,tcp,3389,Terminal Services Doesn't Use Network Level Authentication (NLA) Only,The remote Terminal Services doesn't use Network Level Authentication only.,"The remote Terminal Services is not configured to use Network Level
 Authentication (NLA) only. NLA uses the Credential Security Support
 Provider (CredSSP) protocol to perform strong server authentication
 either through TLS/SSL or Kerberos mechanisms, which protect against
@@ -1619,7 +1619,7 @@ software by completing user authentication before a full RDP
 connection is established.","Enable Network Level Authentication (NLA) on the remote RDP server. This is
 generally done on the 'Remote' tab of the 'System' settings on Windows.","https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732713(v=ws.11)
 http://www.nessus.org/u?e2628096",Nessus was able to negotiate non-NLA (Network Level Authentication) security.
-64814,,,None,192.168.11.139,tcp,3389,Terminal Services Use SSL/TLS,The remote Terminal Services use SSL/TLS.,The remote Terminal Services is configured to use SSL/TLS.,n/a,,"Subject Name: 
+64814,,,None,192.168.1.1,tcp,3389,Terminal Services Use SSL/TLS,The remote Terminal Services use SSL/TLS.,The remote Terminal Services is configured to use SSL/TLS.,n/a,,"Subject Name: 
 
 Common Name: WIN-UQA7NBQPU3C
 
@@ -1681,7 +1681,7 @@ Key Usage: Key Encipherment, Data Encipherment
 
 
 "
-65821,CVE-2013-2566,4.3,Medium,192.168.11.139,tcp,3389,SSL RC4 Cipher Suites Supported (Bar Mitzvah),The remote service supports the use of the RC4 cipher.,"The remote host supports the use of RC4 in one or more cipher suites.
+65821,CVE-2013-2566,4.3,Medium,192.168.1.1,tcp,3389,SSL RC4 Cipher Suites Supported (Bar Mitzvah),The remote service supports the use of the RC4 cipher.,"The remote host supports the use of RC4 in one or more cipher suites.
 The RC4 cipher is flawed in its generation of a pseudo-random stream
 of bytes so that a wide variety of small biases are introduced into
 the stream, decreasing its randomness.
@@ -1714,7 +1714,7 @@ The fields above are :
   MAC={message authentication code}
   {export flag}
 "
-65821,CVE-2015-2808,4.3,Medium,192.168.11.139,tcp,3389,SSL RC4 Cipher Suites Supported (Bar Mitzvah),The remote service supports the use of the RC4 cipher.,"The remote host supports the use of RC4 in one or more cipher suites.
+65821,CVE-2015-2808,4.3,Medium,192.168.1.1,tcp,3389,SSL RC4 Cipher Suites Supported (Bar Mitzvah),The remote service supports the use of the RC4 cipher.,"The remote host supports the use of RC4 in one or more cipher suites.
 The RC4 cipher is flawed in its generation of a pseudo-random stream
 of bytes so that a wide variety of small biases are introduced into
 the stream, decreasing its randomness.
@@ -1747,14 +1747,14 @@ The fields above are :
   MAC={message authentication code}
   {export flag}
 "
-66173,,,None,192.168.11.139,tcp,3389,RDP Screenshot,It is possible to take a screenshot of the remote login screen.,"This script attempts to connect to the remote host via RDP (Remote
+66173,,,None,192.168.1.1,tcp,3389,RDP Screenshot,It is possible to take a screenshot of the remote login screen.,"This script attempts to connect to the remote host via RDP (Remote
 Desktop Protocol) and attempts to take a screenshot of the login
 screen.
 
 While this is not a vulnerability by itself, some versions of Windows
 display the names of the users who can connect and which ones are
 connected already.",n/a,,It was possible to gather the following screenshot of the remote login screen.
-66334,,,None,192.168.11.139,tcp,0,Patch Report,The remote host is missing several patches.,"The remote host is missing one or more security patches. This plugin
+66334,,,None,192.168.1.1,tcp,0,Patch Report,The remote host is missing several patches.,"The remote host is missing one or more security patches. This plugin
 lists the newest version of each patch to install to make sure the
 remote host is up-to-date.",Install the patches listed below.,,"
 
@@ -1766,7 +1766,7 @@ remote host is up-to-date.",Install the patches listed below.,,"
 
 
 "
-70544,,,None,192.168.11.139,tcp,3389,SSL Cipher Block Chaining Cipher Suites Supported,"The remote service supports the use of SSL Cipher Block Chaining
+70544,,,None,192.168.1.1,tcp,3389,SSL Cipher Block Chaining Cipher Suites Supported,"The remote service supports the use of SSL Cipher Block Chaining
 ciphers, which combine previous blocks with subsequent ones.","The remote host supports the use of SSL ciphers that operate in Cipher
 Block Chaining (CBC) mode.  These cipher suites offer additional
 security over Electronic Codebook (ECB) mode, but have the potential to
@@ -1800,7 +1800,7 @@ The fields above are :
   MAC={message authentication code}
   {export flag}
 "
-79638,CVE-2014-6321,10,Critical,192.168.11.139,tcp,3389,MS14-066: Vulnerability in Schannel Could Allow Remote Code Execution (2992611) (uncredentialed check),"The remote Windows host is affected by a remote code execution
+79638,CVE-2014-6321,10,Critical,192.168.1.1,tcp,3389,MS14-066: Vulnerability in Schannel Could Allow Remote Code Execution (2992611) (uncredentialed check),"The remote Windows host is affected by a remote code execution
 vulnerability.","The remote Windows host is affected by a remote code execution
 vulnerability due to improper processing of packets by the Secure
 Channel (Schannel) security package. An attacker can exploit this
@@ -1813,14 +1813,14 @@ not ask for with a CertificateRequest message. In this case, the
 plugin cannot proceed to detect the vulnerability as the
 CertificateVerify message cannot be sent.","Microsoft has released a set of patches for Windows 2003, Vista, 2008,
 7, 2008 R2, 8, 2012, 8.1, and 2012 R2.",http://www.nessus.org/u?64e97902,
-86420,,,None,192.168.11.139,tcp,0,Ethernet MAC Addresses,"This plugin gathers MAC addresses from various sources and
+86420,,,None,192.168.1.1,tcp,0,Ethernet MAC Addresses,"This plugin gathers MAC addresses from various sources and
 consolidates them into a list.","This plugin gathers MAC addresses discovered from both remote probing
 of the host (e.g. SNMP and Netbios) and from running local checks
 (e.g. ifconfig). It then consolidates the MAC addresses into a single,
 unique, and uniform list.",n/a,,"The following is a consolidated list of detected MAC addresses:
   - 00:0C:29:E5:6E:5C
 "
-90510,CVE-2016-0128,5.8,Medium,192.168.11.139,tcp,49155,MS16-047: Security Update for SAM and LSAD Remote Protocols (3148527) (Badlock) (uncredentialed check),"The remote Windows host is affected by an elevation of privilege
+90510,CVE-2016-0128,5.8,Medium,192.168.1.1,tcp,49155,MS16-047: Security Update for SAM and LSAD Remote Protocols (3148527) (Badlock) (uncredentialed check),"The remote Windows host is affected by an elevation of privilege
 vulnerability.","The remote Windows host is affected by an elevation of privilege
 vulnerability in the Security Account Manager (SAM) and Local Security
 Authority (Domain Policy) (LSAD) protocols due to improper
@@ -1832,7 +1832,7 @@ allowing the attacker to impersonate an authenticated user and access
 the SAM database.","Microsoft has released a set of patches for Windows Vista, 2008, 7,
 2008 R2, 2012, 8.1, RT 8.1, 2012 R2, and 10.","http://www.nessus.org/u?52ade1e9
 http://badlock.org/",
-96982,,,None,192.168.11.139,tcp,445,Server Message Block (SMB) Protocol Version 1 Enabled (uncredentialed check),The remote Windows host supports the SMBv1 protocol.,"The remote Windows host supports Server Message Block Protocol
+96982,,,None,192.168.1.1,tcp,445,Server Message Block (SMB) Protocol Version 1 Enabled (uncredentialed check),The remote Windows host supports the SMBv1 protocol.,"The remote Windows host supports Server Message Block Protocol
 version 1 (SMBv1). Microsoft recommends that users discontinue the use
 of SMBv1 due to the lack of security features that were included in
 later SMB versions. Additionally, the Shadow Brokers group reportedly
@@ -1850,7 +1850,7 @@ http://www.nessus.org/u?234f8ef8
 http://www.nessus.org/u?4c7e0cf3","
 The remote host supports SMBv1.
 "
-97833,CVE-2017-0143,9.3,High,192.168.11.139,tcp,445,MS17-010: Security Update for Microsoft Windows SMB Server (4013389) (ETERNALBLUE) (ETERNALCHAMPION) (ETERNALROMANCE) (ETERNALSYNERGY) (WannaCry) (EternalRocks) (Petya) (uncredentialed check),The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host is affected by the following vulnerabilities :
+97833,CVE-2017-0143,9.3,High,192.168.1.1,tcp,445,MS17-010: Security Update for Microsoft Windows SMB Server (4013389) (ETERNALBLUE) (ETERNALCHAMPION) (ETERNALROMANCE) (ETERNALSYNERGY) (WannaCry) (EternalRocks) (Petya) (uncredentialed check),The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host is affected by the following vulnerabilities :
 
   - Multiple remote code execution vulnerabilities exist in
     Microsoft Server Message Block 1.0 (SMBv1) due to
@@ -1897,7 +1897,7 @@ http://www.nessus.org/u?234f8ef8
 http://www.nessus.org/u?4c7e0cf3
 https://github.com/stamparm/EternalRocks/
 http://www.nessus.org/u?59db5b5b",
-97833,CVE-2017-0144,9.3,High,192.168.11.139,tcp,445,MS17-010: Security Update for Microsoft Windows SMB Server (4013389) (ETERNALBLUE) (ETERNALCHAMPION) (ETERNALROMANCE) (ETERNALSYNERGY) (WannaCry) (EternalRocks) (Petya) (uncredentialed check),The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host is affected by the following vulnerabilities :
+97833,CVE-2017-0144,9.3,High,192.168.1.1,tcp,445,MS17-010: Security Update for Microsoft Windows SMB Server (4013389) (ETERNALBLUE) (ETERNALCHAMPION) (ETERNALROMANCE) (ETERNALSYNERGY) (WannaCry) (EternalRocks) (Petya) (uncredentialed check),The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host is affected by the following vulnerabilities :
 
   - Multiple remote code execution vulnerabilities exist in
     Microsoft Server Message Block 1.0 (SMBv1) due to
@@ -1944,7 +1944,7 @@ http://www.nessus.org/u?234f8ef8
 http://www.nessus.org/u?4c7e0cf3
 https://github.com/stamparm/EternalRocks/
 http://www.nessus.org/u?59db5b5b",
-97833,CVE-2017-0145,9.3,High,192.168.11.139,tcp,445,MS17-010: Security Update for Microsoft Windows SMB Server (4013389) (ETERNALBLUE) (ETERNALCHAMPION) (ETERNALROMANCE) (ETERNALSYNERGY) (WannaCry) (EternalRocks) (Petya) (uncredentialed check),The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host is affected by the following vulnerabilities :
+97833,CVE-2017-0145,9.3,High,192.168.1.1,tcp,445,MS17-010: Security Update for Microsoft Windows SMB Server (4013389) (ETERNALBLUE) (ETERNALCHAMPION) (ETERNALROMANCE) (ETERNALSYNERGY) (WannaCry) (EternalRocks) (Petya) (uncredentialed check),The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host is affected by the following vulnerabilities :
 
   - Multiple remote code execution vulnerabilities exist in
     Microsoft Server Message Block 1.0 (SMBv1) due to
@@ -1991,7 +1991,7 @@ http://www.nessus.org/u?234f8ef8
 http://www.nessus.org/u?4c7e0cf3
 https://github.com/stamparm/EternalRocks/
 http://www.nessus.org/u?59db5b5b",
-97833,CVE-2017-0146,9.3,High,192.168.11.139,tcp,445,MS17-010: Security Update for Microsoft Windows SMB Server (4013389) (ETERNALBLUE) (ETERNALCHAMPION) (ETERNALROMANCE) (ETERNALSYNERGY) (WannaCry) (EternalRocks) (Petya) (uncredentialed check),The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host is affected by the following vulnerabilities :
+97833,CVE-2017-0146,9.3,High,192.168.1.1,tcp,445,MS17-010: Security Update for Microsoft Windows SMB Server (4013389) (ETERNALBLUE) (ETERNALCHAMPION) (ETERNALROMANCE) (ETERNALSYNERGY) (WannaCry) (EternalRocks) (Petya) (uncredentialed check),The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host is affected by the following vulnerabilities :
 
   - Multiple remote code execution vulnerabilities exist in
     Microsoft Server Message Block 1.0 (SMBv1) due to
@@ -2038,7 +2038,7 @@ http://www.nessus.org/u?234f8ef8
 http://www.nessus.org/u?4c7e0cf3
 https://github.com/stamparm/EternalRocks/
 http://www.nessus.org/u?59db5b5b",
-97833,CVE-2017-0147,9.3,High,192.168.11.139,tcp,445,MS17-010: Security Update for Microsoft Windows SMB Server (4013389) (ETERNALBLUE) (ETERNALCHAMPION) (ETERNALROMANCE) (ETERNALSYNERGY) (WannaCry) (EternalRocks) (Petya) (uncredentialed check),The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host is affected by the following vulnerabilities :
+97833,CVE-2017-0147,9.3,High,192.168.1.1,tcp,445,MS17-010: Security Update for Microsoft Windows SMB Server (4013389) (ETERNALBLUE) (ETERNALCHAMPION) (ETERNALROMANCE) (ETERNALSYNERGY) (WannaCry) (EternalRocks) (Petya) (uncredentialed check),The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host is affected by the following vulnerabilities :
 
   - Multiple remote code execution vulnerabilities exist in
     Microsoft Server Message Block 1.0 (SMBv1) due to
@@ -2085,7 +2085,7 @@ http://www.nessus.org/u?234f8ef8
 http://www.nessus.org/u?4c7e0cf3
 https://github.com/stamparm/EternalRocks/
 http://www.nessus.org/u?59db5b5b",
-97833,CVE-2017-0148,9.3,High,192.168.11.139,tcp,445,MS17-010: Security Update for Microsoft Windows SMB Server (4013389) (ETERNALBLUE) (ETERNALCHAMPION) (ETERNALROMANCE) (ETERNALSYNERGY) (WannaCry) (EternalRocks) (Petya) (uncredentialed check),The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host is affected by the following vulnerabilities :
+97833,CVE-2017-0148,9.3,High,192.168.1.1,tcp,445,MS17-010: Security Update for Microsoft Windows SMB Server (4013389) (ETERNALBLUE) (ETERNALCHAMPION) (ETERNALROMANCE) (ETERNALSYNERGY) (WannaCry) (EternalRocks) (Petya) (uncredentialed check),The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host is affected by the following vulnerabilities :
 
   - Multiple remote code execution vulnerabilities exist in
     Microsoft Server Message Block 1.0 (SMBv1) due to
@@ -2132,7 +2132,7 @@ http://www.nessus.org/u?234f8ef8
 http://www.nessus.org/u?4c7e0cf3
 https://github.com/stamparm/EternalRocks/
 http://www.nessus.org/u?59db5b5b",
-100464,CVE-2017-0267,9.3,High,192.168.11.139,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
+100464,CVE-2017-0267,9.3,High,192.168.1.1,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
 enabled. It is, therefore, affected by multiple vulnerabilities :
 
   - Multiple information disclosure vulnerabilities exist
@@ -2193,7 +2193,7 @@ http://www.nessus.org/u?ea45bbc5
 http://www.nessus.org/u?4195776a
 http://www.nessus.org/u?fbf092cf
 http://www.nessus.org/u?8c0cc566",
-100464,CVE-2017-0268,9.3,High,192.168.11.139,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
+100464,CVE-2017-0268,9.3,High,192.168.1.1,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
 enabled. It is, therefore, affected by multiple vulnerabilities :
 
   - Multiple information disclosure vulnerabilities exist
@@ -2254,7 +2254,7 @@ http://www.nessus.org/u?ea45bbc5
 http://www.nessus.org/u?4195776a
 http://www.nessus.org/u?fbf092cf
 http://www.nessus.org/u?8c0cc566",
-100464,CVE-2017-0269,9.3,High,192.168.11.139,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
+100464,CVE-2017-0269,9.3,High,192.168.1.1,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
 enabled. It is, therefore, affected by multiple vulnerabilities :
 
   - Multiple information disclosure vulnerabilities exist
@@ -2315,7 +2315,7 @@ http://www.nessus.org/u?ea45bbc5
 http://www.nessus.org/u?4195776a
 http://www.nessus.org/u?fbf092cf
 http://www.nessus.org/u?8c0cc566",
-100464,CVE-2017-0270,9.3,High,192.168.11.139,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
+100464,CVE-2017-0270,9.3,High,192.168.1.1,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
 enabled. It is, therefore, affected by multiple vulnerabilities :
 
   - Multiple information disclosure vulnerabilities exist
@@ -2376,7 +2376,7 @@ http://www.nessus.org/u?ea45bbc5
 http://www.nessus.org/u?4195776a
 http://www.nessus.org/u?fbf092cf
 http://www.nessus.org/u?8c0cc566",
-100464,CVE-2017-0271,9.3,High,192.168.11.139,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
+100464,CVE-2017-0271,9.3,High,192.168.1.1,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
 enabled. It is, therefore, affected by multiple vulnerabilities :
 
   - Multiple information disclosure vulnerabilities exist
@@ -2437,7 +2437,7 @@ http://www.nessus.org/u?ea45bbc5
 http://www.nessus.org/u?4195776a
 http://www.nessus.org/u?fbf092cf
 http://www.nessus.org/u?8c0cc566",
-100464,CVE-2017-0272,9.3,High,192.168.11.139,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
+100464,CVE-2017-0272,9.3,High,192.168.1.1,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
 enabled. It is, therefore, affected by multiple vulnerabilities :
 
   - Multiple information disclosure vulnerabilities exist
@@ -2498,7 +2498,7 @@ http://www.nessus.org/u?ea45bbc5
 http://www.nessus.org/u?4195776a
 http://www.nessus.org/u?fbf092cf
 http://www.nessus.org/u?8c0cc566",
-100464,CVE-2017-0273,9.3,High,192.168.11.139,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
+100464,CVE-2017-0273,9.3,High,192.168.1.1,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
 enabled. It is, therefore, affected by multiple vulnerabilities :
 
   - Multiple information disclosure vulnerabilities exist
@@ -2559,7 +2559,7 @@ http://www.nessus.org/u?ea45bbc5
 http://www.nessus.org/u?4195776a
 http://www.nessus.org/u?fbf092cf
 http://www.nessus.org/u?8c0cc566",
-100464,CVE-2017-0274,9.3,High,192.168.11.139,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
+100464,CVE-2017-0274,9.3,High,192.168.1.1,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
 enabled. It is, therefore, affected by multiple vulnerabilities :
 
   - Multiple information disclosure vulnerabilities exist
@@ -2620,7 +2620,7 @@ http://www.nessus.org/u?ea45bbc5
 http://www.nessus.org/u?4195776a
 http://www.nessus.org/u?fbf092cf
 http://www.nessus.org/u?8c0cc566",
-100464,CVE-2017-0275,9.3,High,192.168.11.139,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
+100464,CVE-2017-0275,9.3,High,192.168.1.1,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
 enabled. It is, therefore, affected by multiple vulnerabilities :
 
   - Multiple information disclosure vulnerabilities exist
@@ -2681,7 +2681,7 @@ http://www.nessus.org/u?ea45bbc5
 http://www.nessus.org/u?4195776a
 http://www.nessus.org/u?fbf092cf
 http://www.nessus.org/u?8c0cc566",
-100464,CVE-2017-0276,9.3,High,192.168.11.139,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
+100464,CVE-2017-0276,9.3,High,192.168.1.1,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
 enabled. It is, therefore, affected by multiple vulnerabilities :
 
   - Multiple information disclosure vulnerabilities exist
@@ -2742,7 +2742,7 @@ http://www.nessus.org/u?ea45bbc5
 http://www.nessus.org/u?4195776a
 http://www.nessus.org/u?fbf092cf
 http://www.nessus.org/u?8c0cc566",
-100464,CVE-2017-0277,9.3,High,192.168.11.139,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
+100464,CVE-2017-0277,9.3,High,192.168.1.1,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
 enabled. It is, therefore, affected by multiple vulnerabilities :
 
   - Multiple information disclosure vulnerabilities exist
@@ -2803,7 +2803,7 @@ http://www.nessus.org/u?ea45bbc5
 http://www.nessus.org/u?4195776a
 http://www.nessus.org/u?fbf092cf
 http://www.nessus.org/u?8c0cc566",
-100464,CVE-2017-0278,9.3,High,192.168.11.139,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
+100464,CVE-2017-0278,9.3,High,192.168.1.1,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
 enabled. It is, therefore, affected by multiple vulnerabilities :
 
   - Multiple information disclosure vulnerabilities exist
@@ -2864,7 +2864,7 @@ http://www.nessus.org/u?ea45bbc5
 http://www.nessus.org/u?4195776a
 http://www.nessus.org/u?fbf092cf
 http://www.nessus.org/u?8c0cc566",
-100464,CVE-2017-0279,9.3,High,192.168.11.139,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
+100464,CVE-2017-0279,9.3,High,192.168.1.1,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
 enabled. It is, therefore, affected by multiple vulnerabilities :
 
   - Multiple information disclosure vulnerabilities exist
@@ -2925,7 +2925,7 @@ http://www.nessus.org/u?ea45bbc5
 http://www.nessus.org/u?4195776a
 http://www.nessus.org/u?fbf092cf
 http://www.nessus.org/u?8c0cc566",
-100464,CVE-2017-0280,9.3,High,192.168.11.139,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
+100464,CVE-2017-0280,9.3,High,192.168.1.1,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
 enabled. It is, therefore, affected by multiple vulnerabilities :
 
   - Multiple information disclosure vulnerabilities exist
@@ -2986,7 +2986,7 @@ http://www.nessus.org/u?ea45bbc5
 http://www.nessus.org/u?4195776a
 http://www.nessus.org/u?fbf092cf
 http://www.nessus.org/u?8c0cc566",
-100871,,,None,192.168.11.139,tcp,445,Microsoft Windows SMB Versions Supported (remote check),"It was possible to obtain information about the version of SMB running
+100871,,,None,192.168.1.2,tcp,445,Microsoft Windows SMB Versions Supported (remote check),"It was possible to obtain information about the version of SMB running
 on the remote host.","Nessus was able to obtain the version of SMB running on the remote
 host by sending an authentication request to port 139 or 445.
 
@@ -2995,7 +2995,7 @@ The remote host supports the following versions of SMB :
   SMBv1
   SMBv2
 "
-104743,,6.1,Medium,192.168.11.139,tcp,3389,TLS Version 1.0 Protocol Detection,The remote service encrypts traffic using an older version of TLS.,"The remote service accepts connections encrypted using TLS 1.0. TLS 1.0 has a
+104743,,6.1,Medium,192.168.1.2,tcp,3389,TLS Version 1.0 Protocol Detection,The remote service encrypts traffic using an older version of TLS.,"The remote service accepts connections encrypted using TLS 1.0. TLS 1.0 has a
 number of cryptographic design flaws. Modern implementations of TLS 1.0
 mitigate these problems, but newer versions of TLS like 1.2 and 1.3 are
 designed against these flaws and should be used whenever possible.
@@ -3007,7 +3007,7 @@ PCI DSS v3.2 requires that TLS 1.0 be disabled entirely by June 30,
 2018, except for POS POI terminals (and the SSL/TLS termination
 points to which they connect) that can be verified as not being
 susceptible to any known exploits.","Enable support for TLS 1.2 and 1.3, and disable support for TLS 1.0.",https://tools.ietf.org/html/draft-ietf-tls-oldversions-deprecate-00,TLSv1 is enabled and the server supports at least one cipher.
-106716,,,None,192.168.11.139,tcp,445,Microsoft Windows SMB2 and SMB3 Dialects Supported (remote check),"It was possible to obtain information about the dialects of SMB2 and SMB3 available
+106716,,,None,192.168.1.2,tcp,445,Microsoft Windows SMB2 and SMB3 Dialects Supported (remote check),"It was possible to obtain information about the dialects of SMB2 and SMB3 available
 on the remote host.","Nessus was able to obtain the set of SMB2 and SMB3 dialects running on the remote
 host by sending an authentication request to port 139 or 445.",n/a,,"
 The remote host supports the following SMB dialects :
@@ -3024,20 +3024,20 @@ The remote host does NOT support the following SMB dialects :
 	3.1        Windows 10    
 	3.1.1      Windows 10    
 "
-108797,,10,Critical,192.168.11.139,tcp,0,Unsupported Windows OS (remote),The remote OS or service pack is no longer supported.,"The remote version of Microsoft Windows is either missing a service pack
+108797,,10,Critical,192.168.1.2,tcp,0,Unsupported Windows OS (remote),The remote OS or service pack is no longer supported.,"The remote version of Microsoft Windows is either missing a service pack
 or is no longer supported. As a result, it is likely to contain security
 vulnerabilities.",Upgrade to a supported service pack or operating system,https://support.microsoft.com/en-us/lifecycle,"
 The following Windows version is installed and not supported:
 
 Microsoft Windows 7 Ultimate
 "
-110723,,,None,192.168.11.139,tcp,0,No Credentials Provided,"Nessus was able to find common ports used for local checks,
+110723,,,None,192.168.1.2,tcp,0,No Credentials Provided,"Nessus was able to find common ports used for local checks,
 however, no credentials were provided in the scan policy.","Nessus was unable to execute credentialed checks because no 
 credentials were provided.",n/a,,"SMB was detected on port 445 but no credentials were provided.
 SMB local checks were not enabled.
 
 "
-117886,,,None,192.168.11.139,tcp,0,Local Checks Not Enabled (info),Local checks were not enabled.,"Nessus did not enable local checks on the remote host. This does not
+117886,,,None,192.168.1.2,tcp,0,Local Checks Not Enabled (info),Local checks were not enabled.,"Nessus did not enable local checks on the remote host. This does not
 necessarily indicate a problem with the scan. Credentials may not have
 been provided, local checks may not be available for the target, the
 target may not have been identified, or another issue may have
@@ -3055,10 +3055,10 @@ The following issues were reported :
     Message     : 
 Credentials were not provided for detected SMB service.
 "
-125313,CVE-2019-0708,10,Critical,192.168.11.139,tcp,3389,Microsoft RDP RCE (CVE-2019-0708) (BlueKeep) (uncredentialed check),The remote host is affected by a remote code execution vulnerability.,"The remote host is affected by a remote code execution vulnerability in Remote Desktop Protocol (RDP). An
+125313,CVE-2019-0708,10,Critical,192.168.1.2,tcp,3389,Microsoft RDP RCE (CVE-2019-0708) (BlueKeep) (uncredentialed check),The remote host is affected by a remote code execution vulnerability.,"The remote host is affected by a remote code execution vulnerability in Remote Desktop Protocol (RDP). An
 unauthenticated, remote attacker can exploit this, via a series of specially crafted requests, to execute arbitrary code.","Microsoft has released a set of patches for Windows XP, 2003, 2008, 7, and 2008 R2.","http://www.nessus.org/u?577af692
 http://www.nessus.org/u?8e4e0b74",
-999999,CVE-2017-0279,9.3,High,192.168.11.139,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
+999999,CVE-2017-0279,9.3,High,192.168.1.2,tcp,445,Microsoft Windows SMBv1 Multiple Vulnerabilities,The remote Windows host is affected by multiple vulnerabilities.,"The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1)
 enabled. It is, therefore, affected by multiple vulnerabilities :
 
   - Multiple information disclosure vulnerabilities exist

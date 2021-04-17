@@ -28,12 +28,30 @@
 #                       '.:::::'                    ':'````..
 # ------------------------------------------------------------
 
-loops_error_file = './error.json'
-loops_file = './loops.json'
-template_hostscan_file = './template/主机扫描_模板_1.1.docx'
-template_webscan_file = './template/金融巡检_模板_1.1.docx'
 
-vuln_db_file = './cnf/vuln.db'
+systems_file = "./data/systems.csv"
+
+json_loops_error = "./logs/loops_error.json"
+json_loops_global = "./logs/loops_global.json"
+
+template_loops_file = "./template/主机扫描报告模板-202104.docx"
+
+translate_status = True
+translate_asyncios = 4
+translate_baidu_url = "http://api.fanyi.baidu.com/api/trans/vip/translate"
+translate_baidu_appid = "xxxxxxxx"
+translate_baidu_secret = "xxxxxxxx"
+
+translate_youdao_url = "https://openapi.youdao.com/api"
+translate_youdao_appkey = "xxxxxxxx"
+translate_youdao_appsecret = "xxxxxxxx"
+
+translate_order = {
+    "name_en": "name_cn",
+    "describe_en": "describe_cn",
+    "solution_en": "solution_cn",
+}
+vuln_db_file = "./cnf/vuln.db"
 vuln_db_info = {
     "sqlite_code": "utf-8",
     "vuln_table": "vuln",
@@ -41,29 +59,32 @@ vuln_db_info = {
         "plugin_id": 0,
         "name_en": 1,
         "name_cn": 2,
-        "risk_lev": 3,
-        "describe": 4,
-        "solution": 5,
+        "risk_cn": 3,
+        "describe_cn": 4,
+        "solution_cn": 5,
         "cve": 6
     }
 }
 vuln_info = {
     "name_en": "",
     "name_cn": "",
-    "risk_lev": "",
-    "describe": "",
-    "solution": "",
+    "risk_en": "",
+    "risk_cn": "",
+    "describe_en": "",
+    "describe_cn": "",
+    "solution_en": "",
+    "solution_cn": "",
     "cve": ""
 }
 
-nessus_csv_dir = "./csv/nessus/"
+nessus_csv_dir = "./data/nessus/"
 nessus_csv_order = {
     "plugin_id": 0,
 
     "name_en": 7,
-    "risk_lev": 3,
-    "describe": 9,
-    "solution": 10,
+    "risk_en": 3,
+    "describe_en": 9,
+    "solution_en": 10,
     "cve": 1,
 
     "host": 4,
@@ -71,54 +92,28 @@ nessus_csv_order = {
     "port": 6,
 }
 
-# risk
-risk_count = {
-    "紧急": 0,
-    "高危": 0,
-    "中危": 0,
-    "低危": 0,
+risk_scores = {
+    "Critical": 4,
+    "High": 3,
+    "Medium": 2,
+    "Low": 1,
 }
 
-risk_score = {
-    "紧急": 4,
-    "高危": 3,
-    "中危": 2,
-    "低危": 1,
-}
-
-risk_is_loop_range_cn = ["紧急", "高危", "中危"]
-risk_is_loop_range_en = ["Critical", "High", "Medium"]
-
-risk_describe = {
-    "scanhuman": {
-        "safe": "暂未发现有效漏洞。",
-        "unsafe": "发现如下有效漏洞。",
-    },
-    "scanweb": {
-        "safe": "暂未发现有效漏洞。",
-        "unsafe": "发现如下漏洞，经过筛选误报，有效漏洞已列出。"
-    },
-    "scanhost": {
-        "safe": "暂未发现有效漏洞。",
-        "unsafe": "发现如下漏洞，经过筛选误报，有效漏洞已列出。"
-    },
-    "result": {
-        "safe":
-            "暂未发现有效漏洞。",
-        "unsafe":
-            "共发现安全漏洞{risk_count}个，其中紧急{risk_urgent}个、高危{risk_high}个、中危{risk_medium}个、低危{risk_low}个。存在的安全隐患主要包括{risk_includes}等安全漏洞,可能将导致{risk_harms}等严重危害"
-    },
-    "hostresult": {
-        "safe":
-            "暂未发现有效漏洞。",
-        "unsafe":
-            "共发现安全漏洞{risk_count}个,存在的安全隐患主要包括{risk_includes}等安全漏洞,详情见如下章节。"
-    }
-}
-# 翻译风险等级
-translate_risk = {
+risk_en2cn = {
     "Critical": "紧急",
     "High": "高危",
     "Medium": "中危",
-    "Low": "低危"
+    "Low": "低危",
+}
+
+risk_range_en = ["Critical", "High", "Medium", "Low"]
+
+risk_loops_conclusion = {
+    "safe": "暂未发现有效漏洞。",
+    "unsafe": "共发现安全漏洞种类{risk_count}个，其中紧急漏洞{risk_urgent}个、高危漏洞{risk_high}个、中危漏洞{risk_medium}个、低危漏洞{risk_low}个。存在的安全隐患主要包括{risk_includes}等安全漏洞，可能将导致{risk_harms}等严重危害。"
+}
+
+risk_hosts_conclusion = {
+    "safe": "暂未发现有效漏洞。",
+    "unsafe": "共发现安全漏洞主机{risk_count}个，其中紧急主机{risk_urgent}个、高危主机{risk_high}个、中危主机{risk_medium}个、低危主机{risk_low}个。存在的安全隐患主要包括{risk_includes}等安全漏洞，可能将导致{risk_harms}等严重危害。"
 }
