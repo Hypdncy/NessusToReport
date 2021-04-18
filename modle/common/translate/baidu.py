@@ -50,7 +50,7 @@ class TranBaidu(TranBase):
         for pilugn_id, loop in self.LOOPHOLES.items():
             if loop["describe_cn"]:
                 continue
-
+            self.tran_count += 1
             for type_en, type_cn in translate_order.items():
                 fromLang = "auto"  # 原文语种
                 toLang = "zh"  # 译文语种

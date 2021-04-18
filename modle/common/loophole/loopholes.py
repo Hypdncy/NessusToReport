@@ -137,20 +137,17 @@ class Loopholes(LoopholesBase):
         """
         pass
 
-    def _dumps_errors(self):
+    def _dump_loops(self):
         """
         序列化Error
         :return:
         """
-
         with open(json_loops_error, "w", encoding="UTF-8") as f:
             json.dump(self.loops_error, f, ensure_ascii=False, indent=4)
 
-    def _dumps_loops(self):
-        """
-        序列化Error
-        :return:
-        """
+        for plugin_id in self.loops_error:
+            self.loops_error[plugin_id] = self.loops_global[plugin_id]
+
         with open(json_loops_global, "w", encoding="UTF-8") as f:
             json.dump(self.loops_global, f, ensure_ascii=False, indent=4)
 
@@ -162,7 +159,5 @@ class Loopholes(LoopholesBase):
         self.update_self_levels()
 
         self.sort_by_risk()
-        self._dumps_errors()
-        self._dumps_loops()
         logging.info("----漏洞种类总数：{0}".format(len(loop_host_ports)))
         logging.info("----漏洞主机总数：{0}".format(len(host_loop_ports)))
