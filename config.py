@@ -67,4 +67,3 @@ nessus_risk_self = {
     "High": [],
     "Medium": []
 }
-table_host_ips = ["序号", "IP地址", "对象名称"]

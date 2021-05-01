@@ -77,9 +77,9 @@ class DocxLoops(DocxBase):
 
         write_table_rows(0, ("主机", "端口"))
         idx = 0
-        for host, port in loop_host_ports[plugin_id].items():
+        for host, ports in loop_host_ports[plugin_id].items():
             idx = idx + 1
-            write_table_rows(idx, (host, port))
+            write_table_rows(idx, (host, ','.join(ports)))
 
         paragraph3_1 = self.doc.add_paragraph("加固建议：")
         paragraph3_1.style = "安恒信息--列表（符号一级）"

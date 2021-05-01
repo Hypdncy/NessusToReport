@@ -36,9 +36,9 @@ from abc import abstractmethod
 from pathlib import Path
 from docx import Document
 
+from cnf.const import table_host_ips
 from modle.common.loophole.loopholes import Loopholes
 from cnf.data import cnf_data, system_host_names
-from config import table_host_ips
 
 
 class DocxBase(object):

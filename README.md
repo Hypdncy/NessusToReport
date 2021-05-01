@@ -81,3 +81,5 @@ root@hypdncy:~# python main.py # 默认漏洞排序类型扫描报告
 >演示图主机排序
 
 ![演示图](演示图主机排序.png)
+
+Copyright (c) 2020 Hypdncy

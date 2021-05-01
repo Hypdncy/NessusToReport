@@ -51,6 +51,9 @@ translate_order = {
     "describe_en": "describe_cn",
     "solution_en": "solution_cn",
 }
+
+table_host_ips = ["序号", "测试对象", "对象名称"]
+
 vuln_db_file = "./cnf/vuln.db"
 vuln_db_info = {
     "sqlite_code": "utf-8",
