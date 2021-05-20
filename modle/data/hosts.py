@@ -73,7 +73,7 @@ class DataHosts(DataBase):
                         key=lambda x: risk_scores[self.LOOPHOLES[next(iter(x[1]))]["risk_en"]]
                         ))
         host_loop_ports.clear()
-        host_loop_ports.update(**d)
+        host_loop_ports.update(d)
 
         risk["count"] = len(host_loop_ports)
         risk["includes"] = "、".join([x["name_cn"] for x in self.LOOPHOLES.values()][0:3])

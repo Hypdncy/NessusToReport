@@ -33,7 +33,6 @@ import json
 import csv
 import sqlite3
 from pathlib import Path
-from collections import OrderedDict
 
 from modle.common.loophole.base import LoopholesBase
 
@@ -54,8 +53,8 @@ class Loopholes(LoopholesBase):
         :param plugin_id:
         """
         super(Loopholes, self).__init__()
-        self.loops_global = OrderedDict()
-        self.loops_error = OrderedDict()
+        self.loops_global = dict()
+        self.loops_error = dict()
 
     def _get_init_nessus(self):
         """

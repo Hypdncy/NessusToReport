@@ -65,6 +65,7 @@ class TranBase(object):
             return []
         sem = asyncio.Semaphore(translate_asyncios)
         en_reqinfos = self._get_en_reqinfos()
+        logging.info("------翻译漏洞总数：{}".format(self.tran_count))
         reqtasks = [asyncio.create_task(self._tran_http(sem, reqinfo)) for reqinfo in en_reqinfos]
         cn_resinfos = await asyncio.gather(*reqtasks)
 
@@ -83,4 +84,4 @@ class TranBase(object):
         self._tran()
         self._check_en2cn()
         self.LOOPHOLES._dump_loops()
-        logging.info("------翻译漏洞总数{}".format(self.tran_count))
+        logging.info("------翻译完成")
