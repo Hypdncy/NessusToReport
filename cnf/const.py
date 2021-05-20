@@ -62,7 +62,7 @@ vuln_db_info = {
         "plugin_id": 0,
         "name_en": 1,
         "name_cn": 2,
-        "risk_cn": 3,
+        "risk_cn": 3,         # 字段废弃
         "describe_cn": 4,
         "solution_cn": 5,
         "cve": 6

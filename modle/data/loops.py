@@ -87,8 +87,8 @@ class DataLoops(DataBase):
                 loop_host_ports[plugin_id][host] = sorted(list(ports))
             risk[self.LOOPHOLES[plugin_id]["risk_en"]] += 1
             loop_host_ports[plugin_id] = dict(sorted(host_ports.items(), key=key))
-        d = dict(
-            sorted(loop_host_ports.items(), key=lambda x: risk_scores[self.LOOPHOLES[x[0]]["risk_en"]]))
+        d = dict(sorted(loop_host_ports.items(), reverse=True,
+                        key=lambda x: risk_scores[self.LOOPHOLES[x[0]]["risk_en"]]))
         loop_host_ports.clear()
         loop_host_ports.update(d)
         risk["count"] = len(loop_host_ports)

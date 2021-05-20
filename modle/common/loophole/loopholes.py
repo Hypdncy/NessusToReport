@@ -37,9 +37,9 @@ from collections import OrderedDict
 
 from modle.common.loophole.base import LoopholesBase
 
-from cnf.const import json_loops_error, json_loops_global, risk_scores, risk_en2cn, vuln_db_info, vuln_db_file, \
-    vuln_info, risk_range_en, nessus_csv_dir, nessus_csv_order
-from config import nessus_vuln_self, nessus_risk_self, nessus_ignore_ids
+from cnf.const import json_loops_error, json_loops_global, risk_en2cn, vuln_db_info, vuln_db_file, vuln_info, \
+    risk_range_en, nessus_csv_dir, nessus_csv_order
+from config import nessus_vuln_self, nessus_risk_self, nessus_ignore_ids, nessus_ignore_ips
 from cnf.data import host_loop_ports, loop_host_ports
 
 
@@ -71,9 +71,9 @@ class Loopholes(LoopholesBase):
                 for row in rows:
                     host = str(row[nessus_csv_order["host"]])
                     plugin_id = str(row[nessus_csv_order["plugin_id"]])
-                    if not (plugin_id in nessus_vuln_self or row[nessus_csv_order["risk_en"]] in risk_range_en):
+                    if host in nessus_ignore_ips or plugin_id in nessus_ignore_ids or row[
+                        nessus_csv_order["risk_en"]] not in risk_range_en:
                         continue
-
                     port = str(row[nessus_csv_order["port"]])
                     info = vuln_info.copy()
                     for key in vuln_info.copy():
@@ -84,16 +84,12 @@ class Loopholes(LoopholesBase):
                     loop_host_ports.setdefault(plugin_id, dict()).setdefault(host, set([])).add(port)
                     host_loop_ports.setdefault(host, dict()).setdefault(plugin_id, set([])).add(port)
 
-    def _is_loop(self, row):
-        res = 0
-        plugin_id = str(row[nessus_csv_order["plugin_id"]])
-        if plugin_id in nessus_ignore_ids:
-            pass
-        elif plugin_id in nessus_vuln_self or row[nessus_csv_order["risk_en"]] in risk_range_en:
-            res = 1
-        return res
-
     def update_db_loops(self):
+        """
+        TODO
+        # 旧的漏洞库风险等级与nessus扫描出来的结果不一致，现已覆盖
+        :return:
+        """
         conn = sqlite3.connect(vuln_db_file)
         c = conn.cursor()
         for plugin_id, info in self.loops_global.items():
@@ -104,6 +100,7 @@ class Loopholes(LoopholesBase):
             for row in rows:
                 for key, value in vuln_db_info["order"].items():
                     info[key] = str(row[value])
+                info["risk_cn"] = risk_en2cn[info["risk_en"]]
                 break
             else:
                 self.loops_error[plugin_id] = info
@@ -116,10 +113,6 @@ class Loopholes(LoopholesBase):
         """
         for plugin_id, info in nessus_vuln_self.items():
             self.loops_global.get(plugin_id, dict()).update(info)
-
-    def sort_by_risk(self):
-        self.loops_global = OrderedDict(
-            sorted(self.loops_global.items(), key=lambda x: risk_scores[x[1]["risk_en"]], reverse=True))
 
     def update_self_levels(self):
         """
@@ -158,6 +151,5 @@ class Loopholes(LoopholesBase):
         self.update_self_loops()
         self.update_self_levels()
 
-        self.sort_by_risk()
         logging.info("----漏洞种类总数：{0}".format(len(loop_host_ports)))
         logging.info("----漏洞主机总数：{0}".format(len(host_loop_ports)))

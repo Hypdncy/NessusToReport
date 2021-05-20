@@ -41,6 +41,11 @@ config_data = {
 datetime_cn = ""
 # datetime_cn = datetime.strptime("2021-03-23 UTC +0800", "%Y-%m-%d %Z %z")
 
+# 配置忽略的IP,通常为扫描IP段时自己的IP
+nessus_ignore_ips ={
+    "1.1.1.1"
+}
+
 # 配置忽略的漏洞ID
 nessus_ignore_ids = [
     # 举个栗子 "0000", "0001"

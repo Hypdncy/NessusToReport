@@ -91,8 +91,8 @@ class DocxLoops(DocxBase):
         画漏洞
         :return:
         """
-        for plugin_id, info in self.LOOPHOLES.items():
-            self.draw_loophole_info(plugin_id, info)
+        for plugin_id in loop_host_ports.keys():
+            self.draw_loophole_info(plugin_id, self.LOOPHOLES[plugin_id])
 
     def run(self):
         super(DocxLoops, self).run()
