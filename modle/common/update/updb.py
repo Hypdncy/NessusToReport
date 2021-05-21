@@ -75,27 +75,18 @@ class UpdateDb(object):
                                                                                 plugin_id=int(plugin_id)))
             if list(rows):
                 continue
-            flag = 0
-            for v in info.values():
-                if "'" in v:
-                    print(plugin_id, info)
-                    flag = 1
-                    break
-
-            if flag:
-                continue
-            count += 0
+            count += 1
             res = c.execute(
                 "INSERT INTO {table} (plugin_id,name_en,name_cn,risk_cn,describe_cn,solution_cn,cve,is_update) \
                  VALUES ('{plugin_id}','{name_en}','{name_cn}','{risk_cn}','{describe_cn}','{solution_cn}','{cve}',1)"
                     .format(table=vuln_db_info["vuln_table"],
                             plugin_id=plugin_id,
-                            name_en=info["name_en"],
-                            name_cn=info["name_cn"],
-                            risk_cn=info["risk_cn"],
-                            describe_cn=info["describe_cn"],
-                            solution_cn=info["solution_cn"],
-                            cve=info["cve"]
+                            name_en=info["name_en"].replace("'", "''"),
+                            name_cn=info["name_cn"].replace("'", "''"),
+                            risk_cn=info["risk_cn"].replace("'", "''"),
+                            describe_cn=info["describe_cn"].replace("'", "''"),
+                            solution_cn=info["solution_cn"].replace("'", "''"),
+                            cve=info["cve"].replace("'", "''")
                             )
             )
         print("本次更新漏洞数量：{count}".format(count=count))
