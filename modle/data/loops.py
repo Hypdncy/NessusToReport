@@ -62,31 +62,31 @@ class DataLoops(DataBase):
             risk_includes=risk["includes"],
             risk_harms=risk["harms"])
 
-    def _sort_lambda_key(self):
+    def _sort_lambda_key(self, host_ports):
         """
         IP排序和字符排序
         :return:
         """
-        for host in system_host_names.keys():
+        for host in host_ports.keys():
             try:
                 IP(host)
             except Exception:
                 break
         else:
             return lambda x: IP(x[0]).int()
-        return lambda x: x
+        return lambda x: x[0]
 
     def _sort_and_gen_date(self):
         """
         :return:
         """
-        key = self._sort_lambda_key()
+
         risk = cnf_data["risk"]
         for plugin_id, host_ports in loop_host_ports.items():
             for host, ports in host_ports.items():
                 loop_host_ports[plugin_id][host] = sorted(list(ports))
             risk[self.LOOPHOLES[plugin_id]["risk_en"]] += 1
-            loop_host_ports[plugin_id] = dict(sorted(host_ports.items(), key=key))
+            loop_host_ports[plugin_id] = dict(sorted(host_ports.items(), key=self._sort_lambda_key(host_ports)))
         d = dict(sorted(loop_host_ports.items(), reverse=True,
                         key=lambda x: risk_scores[self.LOOPHOLES[x[0]]["risk_en"]]))
         loop_host_ports.clear()
