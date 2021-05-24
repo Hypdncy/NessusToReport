@@ -31,8 +31,8 @@ from datetime import datetime
 
 config_data = {
     "user": {
-        "name": "安恒信息",  # 客户名称
-        "acronym": "AHXX",  # 客户名字缩写
+        "name": "懂王",  # 客户名称
+        "acronym": "DW",  # 客户名字缩写
         "contacts": "张三",  # 客户联系人
         "phone": "13838383838",  # 手机号
     }
@@ -42,7 +42,7 @@ datetime_cn = ""
 # datetime_cn = datetime.strptime("2021-03-23 UTC +0800", "%Y-%m-%d %Z %z")
 
 # 配置忽略的IP,通常为扫描IP段时自己的IP
-nessus_ignore_ips ={
+nessus_ignore_ips = {
     "1.1.1.1"
 }
 

@@ -28,6 +28,7 @@
 #                       '.:::::'                    ':'````..
 # ------------------------------------------------------------
 
+company_name = "懂王"
 
 systems_file = "./data/systems.csv"
 
@@ -39,8 +40,8 @@ template_loops_file = "./template/主机扫描报告模板-202104.docx"
 translate_status = True
 translate_asyncios = 4
 translate_baidu_url = "http://api.fanyi.baidu.com/api/trans/vip/translate"
-translate_baidu_appid = "xxxxxxxx"
-translate_baidu_secret = "xxxxxxxx"
+translate_baidu_appid = "XXXXXX"
+translate_baidu_secret = "XXXXXX"
 
 translate_youdao_url = "https://openapi.youdao.com/api"
 translate_youdao_appkey = "xxxxxxxx"
@@ -62,7 +63,7 @@ vuln_db_info = {
         "plugin_id": 0,
         "name_en": 1,
         "name_cn": 2,
-        "risk_cn": 3,         # 字段废弃
+        "risk_cn": 3,  # 字段废弃
         "describe_cn": 4,
         "solution_cn": 5,
         "cve": 6

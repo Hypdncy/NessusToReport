@@ -36,7 +36,7 @@ from abc import abstractmethod
 from pathlib import Path
 from docx import Document
 
-from cnf.const import table_host_ips
+from cnf.const import table_host_ips, company_name
 from modle.common.loophole.loopholes import Loopholes
 from cnf.data import cnf_data, system_host_names
 
@@ -158,11 +158,11 @@ class DocxBase(object):
                     row_cells = table.add_row().cells
 
                     row_cells[0].paragraphs[0].text = str(num)
-                    row_cells[0].paragraphs[0].style = "安恒信息--正文"
+                    row_cells[0].paragraphs[0].style = "{company}--正文".format(company=company_name)
                     row_cells[1].paragraphs[0].text = key
-                    row_cells[1].paragraphs[0].style = "安恒信息--正文"
+                    row_cells[1].paragraphs[0].style = "{company}--正文".format(company=company_name)
                     row_cells[2].paragraphs[0].text = value
-                    row_cells[2].paragraphs[0].style = "安恒信息--正文"
+                    row_cells[2].paragraphs[0].style = "{company}--正文".format(company=company_name)
 
                 break
 

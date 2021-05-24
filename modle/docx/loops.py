@@ -34,7 +34,7 @@ from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 
 from modle.common.loophole.loopholes import Loopholes
 from modle.docx.base import DocxBase
-from cnf.const import template_loops_file
+from cnf.const import template_loops_file, company_name
 from cnf.data import cnf_data, loop_host_ports
 
 
@@ -58,17 +58,18 @@ class DocxLoops(DocxBase):
 
         paragraph0 = self.doc.add_paragraph(
             "【{risk_cn}】{name_cn}".format(risk_cn=info["risk_cn"], name_cn=info["name_cn"]))
-        paragraph0.style = "安恒信息--标题 2"
+        paragraph0.style = "{company}--标题 2".format(company=company_name)
         paragraph1_1 = self.doc.add_paragraph("漏洞描述：")
-        paragraph1_1.style = "安恒信息--列表（符号一级）"
+        paragraph1_1.style = "{company}--列表（符号一级）".format(company=company_name)
         paragraph1_2 = self.doc.add_paragraph(
             "{describe_cn}".format(describe_cn=info["describe_cn"].replace("\\u", "_")))
-        paragraph1_2.style = "安恒信息--列表（无符号一级）"
+        paragraph1_2.style = "{company}--列表（无符号一级）".format(company=company_name)
 
         paragraph2_1 = self.doc.add_paragraph("受影响主机：")
-        paragraph2_1.style = "安恒信息--列表（符号一级）"
+        paragraph2_1.style = "{company}--列表（符号一级）".format(company=company_name)
 
-        table = self.doc.add_table(rows=len(loop_host_ports[plugin_id]) + 1, cols=2, style="安恒信息表格缩进")
+        table = self.doc.add_table(rows=len(loop_host_ports[plugin_id]) + 1, cols=2,
+                                   style="{company}表格缩进".format(company=company_name))
 
         def write_table_rows(row_idx, row_datas):
             row = table.row_cells(row_idx)
@@ -82,9 +83,9 @@ class DocxLoops(DocxBase):
             write_table_rows(idx, (host, ','.join(ports)))
 
         paragraph3_1 = self.doc.add_paragraph("加固建议：")
-        paragraph3_1.style = "安恒信息--列表（符号一级）"
+        paragraph3_1.style = "{company}--列表（符号一级）".format(company=company_name)
         paragraph3_2 = self.doc.add_paragraph("{solution}".format(solution=info["solution_cn"].replace("\\u", "_")))
-        paragraph3_2.style = "安恒信息--列表（无符号一级）"
+        paragraph3_2.style = "{company}--列表（无符号一级）".format(company=company_name)
 
     def draw_loop_host_ports(self):
         """
