@@ -2,3 +2,4 @@ requests
 python-docx
 pywin32
 aiohttp
+IPy
