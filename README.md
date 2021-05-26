@@ -2,11 +2,11 @@
 
 > Github地址:`https://github.com/Hypdncy/NessusToReport`
 
-> **V2.0** 求个Start，求个模板！！！
+> **V2.0** 求个Start，欢迎各大厂提供自己的报告样例，我可以做成模板！！！
 
-> **V2.0** 求个Start，求个模板！！！
+> **V2.0** 求个Start，欢迎各大厂提供自己的报告样例，我可以做成模板！！！
 
-> **V2.0** 求个Start，求个模板！！！
+> **V2.0** 求个Start，欢迎各大厂提供自己的报告样例，我可以做成模板！！！
 
 这是一个nessus自动报告生成工具，可以用来自动生成nessus扫描器的中文报告--NessusToReport，程序有两种报告方式：
 
