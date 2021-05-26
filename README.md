@@ -38,10 +38,11 @@ root@hypdncy:~# python main.py -t hosts # 指定主机排序类型扫描报告
 
 ## 配置说明
 
-本工具具有翻译功能，需要自己申请百度、有道翻译API的key，并将其配置到`./config.py`
-> 百度API的Key最好进行个人认证，这样翻译的频率限制会有所放开，否则翻译时会造成KeyError的情况
+本工具具有翻译功能，需要自己申请百度、有道翻译API的key，并将其配置到`./cnf/const.py`
 
-> 有道翻译API是之前的代码未进行验证，欢迎有有道Key的同学更新代码
+> 百度API的Key最好进行个人高级认证，这样翻译的QPS为10，否则翻译时会造成KeyError的情况
+
+> 有道翻译API是之前的代码未进行验证，欢迎有有道Key的同学push代码
 
 > 其他翻译渠道需要在`./modle/common/translate/`添加翻译API的功能，并在`./modle/handle.py`中调用
 
