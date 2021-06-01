@@ -192,6 +192,7 @@ class DocxBase(object):
             docx_abs_file = Path().resolve().joinpath(self.save())
             update_toc_win(docx_abs_file)
         else:
+            self.save()
             logging.warning("更新目录失败，*nix请手动更新目录")
 
     def run(self):
