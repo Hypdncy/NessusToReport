@@ -178,7 +178,16 @@ class DocxBase(object):
 
         def update_toc_win(docx_abs_file):
             import win32com.client
-            word = win32com.client.DispatchEx("Word.Application")
+            word = None
+            try:
+                word = win32com.client.DispatchEx("Word.Application")
+            except Exception:
+                word = win32com.client.DispatchEx("kwps.Application")
+            finally:
+                print(word)
+                if not word:
+                    logging.warning("更新目录失败，windows请安装word或者wps2019")
+                    return
             doc = word.Documents.Open(str(docx_abs_file))
             toc_count = doc.TablesOfContents.Count
             if toc_count == 1:
