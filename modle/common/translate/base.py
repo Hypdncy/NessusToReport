@@ -33,7 +33,7 @@ import asyncio
 from aiohttp.client import ClientSession, ClientTimeout
 
 from modle.common.loophole.loopholes import Loopholes
-from cnf.const import translate_asyncios, translate_status
+from cnf.const import translate_sem, translate_qps, translate_status
 
 
 class TranBase(object):
@@ -48,40 +48,59 @@ class TranBase(object):
             if not info['name_cn']:
                 raise
 
-    async def _tran_http(self, sem, reqinfo):
+    async def _tran_http_with_sem(self, reqinfo, sem):
         async with sem:
-            async with ClientSession(timeout=self.timeout) as session:
-                try:
-                    async with session.request(method=reqinfo["method"], url=reqinfo["url"],
-                                               **reqinfo["kwargs"]) as response:
-                        data = await response.json()
-                        return (reqinfo["plugin_id"], reqinfo["type_cn"], data)
-                except Exception as e:
-                    print(e)
+            return await self._tran_http(reqinfo, sem)
+
+    async def _tran_http(self, reqinfo, sem=None):
+        await asyncio.sleep(1)
+        async with ClientSession(timeout=self.timeout) as session:
+            try:
+                async with session.request(method=reqinfo["method"], url=reqinfo["url"],
+                                           **reqinfo["kwargs"]) as response:
+                    data = await response.json()
+                    return [reqinfo["plugin_id"], reqinfo["type_cn"], data]
+            except Exception as e:
+                print(e)
 
     async def _async_main(self):
+        cn_resinfos = list()
         if not translate_status:
             logging.info("------翻译未开启")
-            return []
-        sem = asyncio.Semaphore(translate_asyncios)
-        en_reqinfos = self._get_en_reqinfos()
+            return cn_resinfos
         logging.info("------翻译漏洞总数：{}".format(self.tran_count))
-        reqtasks = [asyncio.create_task(self._tran_http(sem, reqinfo)) for reqinfo in en_reqinfos]
-        cn_resinfos = await asyncio.gather(*reqtasks)
+
+        sem = None
+        tran_func = self._tran_http
+        en_reqinfos = self._make_en_reqinfos()
+
+        if translate_sem > 0:
+            tran_func = self._tran_http_with_sem
+            sem = asyncio.Semaphore(translate_sem)
+        if translate_qps > 0:
+            reqtasks = [asyncio.create_task(tran_func(reqinfo, sem)) for reqinfo in en_reqinfos]
+            for group in range(int(len(reqtasks) / translate_qps)):
+                cn_resinfos.extend(await asyncio.gather(*reqtasks[group * translate_qps:(group + 1) * translate_qps]))
+            cn_resinfos.extend(
+                await asyncio.gather(*reqtasks[int((len(reqtasks) / translate_qps)) * translate_qps:]))
+        else:
+            reqtasks = [asyncio.create_task(tran_func(reqinfo)) for reqinfo in en_reqinfos]
+            cn_resinfos = await asyncio.gather(*reqtasks)
 
         return cn_resinfos
 
     @abstractmethod
-    def _get_en_reqinfos(self):
+    def _make_en_reqinfos(self):
         pass
 
     @abstractmethod
-    def _tran(self):
+    def _analysis_cn_resinfo(self, resinfo):
         pass
 
     def run(self):
-
-        self._tran()
+        cn_resinfos = asyncio.run(self._async_main())
+        for plugin_id, type_cn, resinfo in cn_resinfos:
+            self.LOOPHOLES[plugin_id][type_cn] = self._analysis_cn_resinfo(resinfo)
         self._check_en2cn()
         self.LOOPHOLES._dump_loops()
         logging.info("------翻译完成")

@@ -184,7 +184,6 @@ class DocxBase(object):
             except Exception:
                 word = win32com.client.DispatchEx("kwps.Application")
             finally:
-                print(word)
                 if not word:
                     logging.warning("更新目录失败，windows请安装word或者wps2019")
                     return

@@ -1,6 +1,10 @@
 # myself
 .idea/
+data/
 /test.py
+/config.py
+/cnf/const.py
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

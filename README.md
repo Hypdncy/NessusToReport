@@ -19,7 +19,7 @@
 
 建议在windows下安装python3.8+版本
 
-> python3.5及其以下版本可能会出现排序错误
+> python3.6及其以下版本可能会出现协程错误
 
 ```shell script
 root@hypdncy:~# pip install -r requirement.txt

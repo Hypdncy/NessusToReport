@@ -27,7 +27,6 @@
 #    ````':.          ':::::::::'                  ::::..
 #                       '.:::::'                    ':'````..
 # ------------------------------------------------------------
-import asyncio
 import uuid
 import hashlib
 import time
@@ -42,7 +41,7 @@ class TranYoudao(TranBase):
     def __init__(self, LOOPHOLES: Loopholes):
         super(TranYoudao, self).__init__(LOOPHOLES)
 
-    def _get_en_reqinfos(self):
+    def _make_en_reqinfos(self):
 
         def encrypt(signStr):
             hash_algorithm = hashlib.sha256()
@@ -89,7 +88,8 @@ class TranYoudao(TranBase):
 
         return en_reqinfos
 
-    def _tran(self):
-        cn_resinfos = asyncio.run(self._async_main())
-        for plugin_id, type_cn, resinfo in cn_resinfos:
-            self.LOOPHOLES[plugin_id][type_cn] = resinfo["translation"]
+    def _analysis_cn_resinfo(self, resinfo):
+        """
+        解析响应体
+        """
+        return resinfo["translation"]

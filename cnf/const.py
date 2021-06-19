@@ -38,7 +38,8 @@ json_loops_global = "./logs/loops_global.json"
 template_loops_file = "./template/主机扫描报告模板-202104.docx"
 
 translate_status = True
-translate_asyncios = 4
+translate_sem = 9  # 协程限制
+translate_qps = 9  # qps限制
 translate_baidu_url = "http://api.fanyi.baidu.com/api/trans/vip/translate"
 translate_baidu_appid = "XXXXXX"
 translate_baidu_secret = "XXXXXX"

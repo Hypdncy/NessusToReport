@@ -95,5 +95,5 @@ class UpdateDb(object):
 
 
 if __name__ == "__main__":
-    u = UpdateDb("../../../logs/loops_error2.json")
+    u = UpdateDb("../../../logs/loops_error.json")
     u.update()

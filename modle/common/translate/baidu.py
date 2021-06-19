@@ -31,7 +31,6 @@
 
 import random
 import hashlib
-import asyncio
 
 from cnf.const import translate_order
 from modle.common.loophole.loopholes import Loopholes
@@ -44,7 +43,7 @@ class TranBaidu(TranBase):
     def __init__(self, LOOPHOLES: Loopholes):
         super(TranBaidu, self).__init__(LOOPHOLES)
 
-    def _get_en_reqinfos(self):
+    def _make_en_reqinfos(self):
 
         en_reqinfos = []
         for pilugn_id, loop in self.LOOPHOLES.items():
@@ -81,7 +80,8 @@ class TranBaidu(TranBase):
 
         return en_reqinfos
 
-    def _tran(self):
-        cn_resinfos = asyncio.run(self._async_main())
-        for plugin_id, type_cn, resinfo in cn_resinfos:
-            self.LOOPHOLES[plugin_id][type_cn] = resinfo["trans_result"][0]["dst"]
+    def _analysis_cn_resinfo(self, resinfo):
+        """
+        解析响应体中的中文数据
+        """
+        return resinfo["trans_result"][0]["dst"]
