@@ -37,7 +37,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
     parser = argparse.ArgumentParser(description="自动化报告生成程序，用于生成主机扫描的报告文档")
-    parser.add_argument("-t", "--type", dest="docxtype", type=str, action="store", default="all",
+    parser.add_argument("-t", "--type", dest="docxtype", type=str, action="store", default="loops",
                         choices=["loops", "hosts", "host", "all"],
                         help="配置文档生成方式")
     args = parser.parse_args()

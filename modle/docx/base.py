@@ -28,11 +28,9 @@
 #                       '.:::::'                    ':'````..
 # ------------------------------------------------------------
 
-from docx import Document
 import re
 import logging
 import platform
-from abc import abstractmethod
 from pathlib import Path
 from docx import Document
 

@@ -27,15 +27,15 @@
 #    ````':.          ':::::::::'                  ::::..
 #                       '.:::::'                    ':'````..
 # ------------------------------------------------------------
-import logging
 
 from docx import Document
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 
 from modle.common.loophole.loopholes import Loopholes
 from modle.docx.base import DocxBase
+
 from cnf.const import template_file, company_name
-from cnf.data import cnf_data, host_loop_ports, system_host_names
+from cnf.data import host_loop_ports, system_host_names
 
 
 class DocxHosts(DocxBase):

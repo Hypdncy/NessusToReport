@@ -2,16 +2,11 @@
 
 > Github地址:`https://github.com/Hypdncy/NessusToReport`
 
-> **V2.0** 求个Start，欢迎各大厂提供自己的报告样例，我可以做成模板！！！
-
-> **V2.0** 求个Start，欢迎各大厂提供自己的报告样例，我可以做成模板！！！
-
-> **V2.0** 求个Start，欢迎各大厂提供自己的报告样例，我可以做成模板！！！
-
 这是一个nessus自动报告生成工具，可以用来自动生成nessus扫描器的中文报告--NessusToReport，程序有两种报告方式：
 
 - 漏洞排序：以漏洞为单位一一罗列拥有该漏洞的主机及其信息
 - 主机排序：以主机为单位一一罗列主机所拥有的漏洞及其信息
+- 单个主机：以主机为单位一一罗列每个主机的漏洞报告（一个主机一份报告）
 
 ## 使用说明
 
@@ -19,7 +14,9 @@
 
 建议在windows下安装python3.8+版本
 
-> python3.6及其以下版本可能会出现协程错误
+> python3.6及其以下版本可能会出现字典错误
+
+> python3.8及其以下版本可能会出现携程错误
 
 ```shell script
 root@hypdncy:~# pip install -r requirement.txt
@@ -31,9 +28,10 @@ root@hypdncy:~# pip install -r requirement.txt
 1. 执行命令`python main.py`
 
 ```shell script
-root@hypdncy:~# python main.py # 默认出两种类型扫描报告
+root@hypdncy:~# python main.py # 默认出漏洞排序类型扫描报告
 root@hypdncy:~# python main.py -t loops # 指定漏洞排序类型扫描报告
 root@hypdncy:~# python main.py -t hosts # 指定主机排序类型扫描报告
+root@hypdncy:~# python main.py -t host  # 指定单个主机类型扫描报告
 ```
 
 ## 配置说明
