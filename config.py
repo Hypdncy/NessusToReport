@@ -48,7 +48,29 @@ nessus_ignore_ips = {
 
 # 配置忽略的漏洞ID
 nessus_ignore_ids = [
-    # 举个栗子 "0000", "0001"
+    # 不支持版本漏洞ID
+    # Microsoft Windows 2000 Unsupported Installation Detection
+    "47709",
+    # Unsupported Windows OS (remote)
+    "108797",
+    # Microsoft Windows Server 2003 Unsupported Installation Detection
+    "84729",
+    # Microsoft Windows XP Unsupported Installation Detection
+    "73182",
+    # Microsoft SQL Server Unsupported Version Detection (remote check)
+    "73756",
+    # Unix Operating System Unsupported Version Detection
+    "33850",
+    # Unsupported Web Server Detection
+    "34460",
+    # Microsoft SQL Server Unsupported Version Detection (remote check)
+    "73756",
+    # Oracle WebLogic Unsupported Version Detection
+    "109345",
+    # Symantec pcAnywhere Unsupported
+    "57859",
+    # Microsoft IIS 6.0 Unsupported Version Detection
+    "97994",
 ]
 
 # 自定义漏洞信息，ID:info
