@@ -32,8 +32,11 @@ import logging
 
 from modle.common.loophole.loopholes import Loopholes
 from modle.common.translate.baidu import TranBaidu
+
 from modle.data.hosts import DataHosts
 from modle.data.loops import DataLoops
+
+from modle.docx.host import DocxHost
 from modle.docx.hosts import DocxHosts
 from modle.docx.loops import DocxLoops
 
@@ -78,7 +81,12 @@ class Handle(object):
         DocxLoops(self.LOOPHOLES).run()
 
     def run_host(self):
-        pass
+        logging.info("开始生成单个主机报告")
+        logging.info("---开始处理数据")
+        DataLoops(self.LOOPHOLES).run()
+
+        logging.info("---开始处理文档")
+        DocxHost(self.LOOPHOLES).run()
 
     def run_all(self):
         self.run_loops()
