@@ -29,7 +29,7 @@
 # ------------------------------------------------------------
 
 from docx import Document
-
+import re
 import logging
 import platform
 from abc import abstractmethod
@@ -49,43 +49,52 @@ class DocxBase(object):
     def __init__(self, LOOPHOLES: Loopholes):
         self.LOOPHOLES = LOOPHOLES
         self.doc = Document()
+        self.ascii_pattern = re.compile(r"{\w+-\w+}", re.ASCII)
+        self.host = ""
 
-    def _sub_paragraph_text(self, paragraph, text_old, text_new):
+    def _sub_paragraph_text(self, paragraph):
         """
         替换段数据
         :param paragraph:
-        :param text_old:
-        :param text_new:
         :return:
         """
 
-        if text_old in paragraph.text:
-            paragraph.text = paragraph.text.replace(text_old, text_new)
+        res = self.ascii_pattern.findall(paragraph.text)
+        if res:
+            for r in res:
+                paragraph.text = paragraph.text.replace(r, cnf_data[r.split("-")[0][1:]][r.split("-")[1][:-1]])
 
-    def _sub_paragraph_runs(self, paragraph, text_old, text_new):
+    def _sub_run_text(self, run):
+        """
+        替换段数据
+        :param paragraph:
+        :return:
+        """
+
+        res = self.ascii_pattern.findall(run.text)
+        if res:
+            for r in res:
+                run.text = run.text.replace(r, cnf_data[r.split("-")[0][1:]][r.split("-")[1][:-1]])
+
+    def _sub_paragraph_runs(self, paragraph):
         """
         替换段数据，分词替换
         :param paragraph:
-        :param text_old:
-        :param text_new:
         :return:
         """
 
         for run in paragraph.runs:
-            if text_old in str(run.text):
-                run.text = run.text.replace(text_old, text_new)
+            self._sub_run_text(run)
 
-    def _sub_paragraphs(self, text_old, text_new):
+    def _sub_paragraphs(self):
         """
         替换段属性
-        :param text_old:
-        :param text_new:
         :return:
         """
         for paragraph in self.doc.paragraphs:
-            self._sub_paragraph_text(paragraph, text_old, text_new)
+            self._sub_paragraph_text(paragraph)
 
-    def _sub_tables(self, text_old, text_new):
+    def _sub_tables(self):
         """
         替换表中数据
         :return:
@@ -98,45 +107,29 @@ class DocxBase(object):
                 for cell in col.cells:
                     # 循环单元格中的段落
                     for paragraph in cell.paragraphs:
-                        self._sub_paragraph_text(paragraph, text_old, text_new)
+                        self._sub_paragraph_text(paragraph)
 
-    def _sub_sections(self, text_old, text_new):
+    def _sub_sections(self):
         """
         替换页的属性
-        :param text_old:
-        :param text_new:
         :return:
         """
 
         # 对页的属性做配置
         for section in self.doc.sections:
             for paragraph in section.header.paragraphs:
-                self._sub_paragraph_runs(paragraph, text_old, text_new)
+                self._sub_paragraph_runs(paragraph)
             for paragraph in section.footer.paragraphs:
-                self._sub_paragraph_runs(paragraph, text_old, text_new)
+                self._sub_paragraph_runs(paragraph)
 
-    def _sub_string(self, text_old, text_new):
+    def sub_string(self, ):
         """
         替换文本
-        :param text_old:
-        :param text_new:
         :return:
         """
-        self._sub_paragraphs(text_old, text_new)
-        self._sub_tables(text_old, text_new)
-        self._sub_sections(text_old, text_new)
-
-    def sub_string(self):
-        """
-
-        :return:
-        """
-        for key1, value1 in cnf_data.items():
-            cnf_data[key1] = cnf_data[key1]
-            for key2, value2 in cnf_data[key1].items():
-                text_old = "{0}{1}-{2}{3}".format("{", key1, key2, "}")
-                text_new = str(value2)
-                self._sub_string(text_old, text_new)
+        self._sub_paragraphs()
+        self._sub_tables()
+        self._sub_sections()
 
     def draw_ip_systems(self):
         """
@@ -177,6 +170,7 @@ class DocxBase(object):
         """
 
         def update_toc_win(docx_abs_file):
+            logging.info("---更新文档目录")
             import win32com.client
             word = None
             try:
