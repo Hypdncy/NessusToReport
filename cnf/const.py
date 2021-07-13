@@ -35,7 +35,7 @@ systems_file = "./data/systems.csv"
 json_loops_error = "./logs/loops_error.json"
 json_loops_global = "./logs/loops_global.json"
 
-template_loops_file = "./template/主机扫描报告模板-202104.docx"
+template_file = "./template/主机扫描报告模板-202104.docx"
 
 translate_status = True
 translate_sem = 9  # 协程限制

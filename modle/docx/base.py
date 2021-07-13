@@ -159,9 +159,11 @@ class DocxBase(object):
 
                 break
 
-    @abstractmethod
     def save(self):
-        pass
+        filename = "./{0}主机扫描报告-{1}-{2}.docx".format(cnf_data["user"]["name"], self.host, cnf_data["date"]["end"])
+        logging.info("---保存主机排序文档：{filename}".format(filename=filename))
+        self.doc.save(filename)
+        return filename
 
     def update_doc_toc(self):
         """

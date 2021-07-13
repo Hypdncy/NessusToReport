@@ -34,7 +34,7 @@ from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 
 from modle.common.loophole.loopholes import Loopholes
 from modle.docx.base import DocxBase
-from cnf.const import template_loops_file, company_name
+from cnf.const import template_file, company_name
 from cnf.data import cnf_data, loop_host_ports
 
 
@@ -42,7 +42,8 @@ class DocxLoops(DocxBase):
 
     def __init__(self, LOOPHOLES: Loopholes):
         super(DocxLoops, self).__init__(LOOPHOLES)
-        self.doc = Document(template_loops_file)
+        self.doc = Document(template_file)
+        self.host = "漏洞排序"
 
     def save(self):
         filename = "./{0}主机扫描报告-{1}-漏洞排序.docx".format(cnf_data["user"]["name"], cnf_data["date"]["end"])

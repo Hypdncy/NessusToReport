@@ -34,7 +34,7 @@ from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 
 from modle.common.loophole.loopholes import Loopholes
 from modle.docx.base import DocxBase
-from cnf.const import template_loops_file, company_name
+from cnf.const import template_file, company_name
 from cnf.data import cnf_data, host_loop_ports, system_host_names
 
 
@@ -42,13 +42,8 @@ class DocxHosts(DocxBase):
 
     def __init__(self, LOOPHOLES: Loopholes):
         super(DocxHosts, self).__init__(LOOPHOLES)
-        self.doc = Document(template_loops_file)
-
-    def save(self):
-        filename = "./{0}主机扫描报告-{1}-主机排序.docx".format(cnf_data["user"]["name"], cnf_data["date"]["end"])
-        logging.info("---保存主机排序文档：{filename}".format(filename=filename))
-        self.doc.save(filename)
-        return filename
+        self.doc = Document(template_file)
+        self.host = "主机排序"
 
     def draw_loophole_info(self, plugin_id, host, ports):
         """
