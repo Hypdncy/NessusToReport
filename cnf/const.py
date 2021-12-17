@@ -28,7 +28,7 @@
 #                       '.:::::'                    ':'````..
 # ------------------------------------------------------------
 
-company_name = "懂王"
+company_name = "Hypdncy"
 
 systems_file = "./data/systems.csv"
 

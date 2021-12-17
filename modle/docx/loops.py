@@ -46,7 +46,7 @@ class DocxLoops(DocxBase):
         self.host = "漏洞排序"
 
     def save(self):
-        filename = "./{0}主机扫描报告-{1}-漏洞排序.docx".format(cnf_data["user"]["name"], cnf_data["date"]["end"])
+        filename = "./{0}主机扫描报告-漏洞排序-{1}.docx".format(cnf_data["user"]["name"], cnf_data["date"]["end"])
         self.doc.save(filename)
         logging.info("---保存漏洞排序文档：{filename}".format(filename=filename))
         return filename

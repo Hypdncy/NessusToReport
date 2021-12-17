@@ -31,8 +31,8 @@ from datetime import datetime
 
 config_data = {
     "user": {
-        "name": "懂王",  # 客户名称
-        "acronym": "DW",  # 客户名字缩写
+        "name": "XX客户",  # 客户名称
+        "acronym": "XXKH",  # 客户名字缩写
         "contacts": "张三",  # 客户联系人
         "phone": "13838383838",  # 手机号
     }

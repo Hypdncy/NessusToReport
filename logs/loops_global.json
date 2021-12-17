@@ -1,75 +1,4 @@
 {
-    "79638": {
-        "name_en": "MS14-066: Vulnerability in Schannel Could Allow Remote Code Execution (2992611) (uncredentialed check)",
-        "name_cn": "MS14-066：Schannel 远程代码执行漏洞",
-        "risk_en": "Critical",
-        "risk_cn": "紧急",
-        "describe_en": "The remote Windows host is affected by a remote code execution vulnerability due to improper processing of packets by the Secure Channel (Schannel) security package. An attacker can exploit this issue by sending specially crafted packets to a Windows server. Note that this plugin sends a client Certificate TLS handshake message followed by a CertificateVerify message. Some Windows hosts will close the connection upon receiving a client certificate for which it did not ask for with a CertificateRequest message. In this case, the plugin cannot proceed to detect the vulnerability as the CertificateVerify message cannot be sent.",
-        "describe_cn": "MS14-066 (CVE-2014-6321) 是存在于Microsoft的schannel.dll中的TLS堆缓冲区溢出漏洞。",
-        "solution_en": "Microsoft has released a set of patches for Windows 2003, Vista, 2008, 7, 2008 R2, 8, 2012, 8.1, and 2012 R2.",
-        "solution_cn": "目前厂商已经发布了升级补丁以修复此安全问题，补丁获取链接： https://technet.microsoft.com/library/security/ms14-066",
-        "cve": "",
-        "plugin_id": "79638"
-    },
-    "108797": {
-        "name_en": "Unsupported Windows OS (remote)",
-        "name_cn": "低版本的Windows系统",
-        "risk_en": "Critical",
-        "risk_cn": "紧急",
-        "describe_en": "The remote version of Microsoft Windows is either missing a service pack or is no longer supported. As a result, it is likely to contain security vulnerabilities.",
-        "describe_cn": "低版本的Windows系统",
-        "solution_en": "Upgrade to a supported service pack or operating system",
-        "solution_cn": "升级操作系统",
-        "cve": "",
-        "plugin_id": "108797"
-    },
-    "125313": {
-        "name_en": "Microsoft RDP RCE (CVE-2019-0708) (BlueKeep) (uncredentialed check)",
-        "name_cn": "Microsoft Remote Desktop Services 输入验证错误漏洞",
-        "risk_en": "Critical",
-        "risk_cn": "紧急",
-        "describe_en": "The remote host is affected by a remote code execution vulnerability in Remote Desktop Protocol (RDP). An unauthenticated, remote attacker can exploit this, via a series of specially crafted requests, to execute arbitrary code.",
-        "describe_cn": "Windows系列服务器于2019年5月15号，被爆出高危漏洞，该漏洞影响范围较广，windows2003、windows2008、windows2008 R2、windows xp * 系统都会遭到攻击，该服务器漏洞利用方式是通过远程桌面端口3389，RDP协议进行攻击的 。CVE-2019-0708漏洞是通过检查用户的身份认证，导致可以绕过认证，不用任何的交互，直接通过rdp协议进行连接发送恶意代码执行命令到服务器中去。这个漏洞是今年来说危害严重性最大的漏洞，换句话说，该漏洞是“可传播的”，这意味着任何利用该漏洞的恶意软件都可能从受影响的计算机传播到受影响的计算机，就像2017年WannaCry恶意软件在全球蔓延一样，跟之前的勒索，永恒之蓝病毒差不多。 *备注：微软不在对 windows-Xp 和windows 2003 提供安全更新（对windows10和8无影响）",
-        "solution_en": "Microsoft has released a set of patches for Windows XP, 2003, 2008, 7, and 2008 R2.",
-        "solution_cn": "目前厂商已发布升级补丁以修复漏洞，补丁获取链接： https://portal.msrc.microsoft.com/zh-CN/security-guidance/advisory/CVE-2019-0708",
-        "cve": "",
-        "plugin_id": "125313"
-    },
-    "97833": {
-        "name_en": "MS17-010: Security Update for Microsoft Windows SMB Server (4013389) (uncredentialed check)",
-        "name_cn": "Windows SMB 远程代码执行漏洞",
-        "risk_en": "High",
-        "risk_cn": "紧急",
-        "describe_en": "The remote Windows host is affected by the following vulnerabilities : - Multiple remote code execution vulnerabilities exist in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of certain requests. An unauthenticated, remote attacker can exploit these vulnerabilities, via a specially crafted packet, to execute arbitrary code. (CVE-2017-0143, CVE-2017-0144, CVE-2017-0145, CVE-2017-0146, CVE-2017-0148) - An information disclosure vulnerability exists in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of certain requests. An unauthenticated, remote attacker can exploit this, via a specially crafted packet, to disclose sensitive information. (CVE-2017-0147) ETERNALBLUE, ETERNALCHAMPION, ETERNALROMANCE, and ETERNALSYNERGY are four of multiple Equation Group vulnerabilities and exploits disclosed on 2017/04/14 by a group known as the Shadow Brokers. WannaCry / WannaCrypt is a ransomware program utilizing the ETERNALBLUE exploit, and EternalRocks is a worm that utilizes seven Equation Group vulnerabilities. Petya is a ransomware program that first utilizes CVE-2017-0199, a vulnerability in Microsoft Office, and then spreads via ETERNALBLUE.",
-        "describe_cn": "当 Microsoft 服务器消息块 1.0 (SMBv1) 服务器处理某些请求时，存在多个远程执行代码漏洞。成功利用这些漏洞的攻击者可以获取在目标系统上执行代码的能力。 为了利用此漏洞，在多数情况下，未经身份验证的攻击者可能向目标 SMBv1 服务器发送经特殊设计的数据包",
-        "solution_en": "Microsoft has released a set of patches for Windows Vista, 2008, 7, 2008 R2, 2012, 8.1, RT 8.1, 2012 R2, 10, and 2016. Microsoft has also released emergency patches for Windows operating systems that are no longer supported, including Windows XP, 2003, and 8. For unsupported Windows operating systems, e.g. Windows XP, Microsoft recommends that users discontinue the use of SMBv1. SMBv1 lacks security features that were included in later SMB versions. SMBv1 can be disabled by following the vendor instructions provided in Microsoft KB2696547. Additionally, US-CERT recommends that users block SMB directly by blocking TCP port 445 on all network boundary devices. For SMB over the NetBIOS API, block TCP ports 137 / 139 and UDP ports 137 / 138 on all network boundary devices.",
-        "solution_cn": "微软已发布官方补丁，具体参考： https://technet.microsoft.com/zh-cn/library/security/MS17-010",
-        "cve": "",
-        "plugin_id": "97833"
-    },
-    "100464": {
-        "name_en": "Microsoft Windows SMBv1 Multiple Vulnerabilities",
-        "name_cn": "Microsoft Windows SMBv1多个漏洞",
-        "risk_en": "High",
-        "risk_cn": "紧急",
-        "describe_en": "The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1) enabled. It is, therefore, affected by multiple vulnerabilities : - Multiple information disclosure vulnerabilities exist in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of SMBv1 packets. An unauthenticated, remote attacker can exploit these vulnerabilities, via a specially crafted SMBv1 packet, to disclose sensitive information. (CVE-2017-0267, CVE-2017-0268, CVE-2017-0270, CVE-2017-0271, CVE-2017-0274, CVE-2017-0275, CVE-2017-0276) - Multiple denial of service vulnerabilities exist in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of requests. An unauthenticated, remote attacker can exploit these vulnerabilities, via a specially crafted SMB request, to cause the system to stop responding. (CVE-2017-0269, CVE-2017-0273, CVE-2017-0280) - Multiple remote code execution vulnerabilities exist in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of SMBv1 packets. An unauthenticated, remote attacker can exploit these vulnerabilities, via a specially crafted SMBv1 packet, to execute arbitrary code. (CVE-2017-0272, CVE-2017-0277, CVE-2017-0278, CVE-2017-0279) Depending on the host's security policy configuration, this plugin cannot always correctly determine if the Windows host is vulnerable if the host is running a later Windows version (i.e., Windows 8.1, 10, 2012, 2012 R2, and 2016) specifically that named pipes and shares are allowed to be accessed remotely and anonymously. Tenable does not recommend this configuration, and the hosts should be checked locally for patches with one of the following plugins, depending on the Windows version : 100054, 100055, 100057, 100059, 100060, or 100061.",
-        "describe_cn": "Microsoft Windows SMB中存在安全更新。如果攻击者将特制数 据包发送到Microsoft Server Message Block 1.0（SMBv1）服务 器，则最严重的漏洞可能允许远程执行代码。",
-        "solution_en": "Apply the applicable security update for your Windows version : - Windows Server 2008 : KB4018466 - Windows 7 : KB4019264 - Windows Server 2008 R2 : KB4019264 - Windows Server 2012 : KB4019216 - Windows 8.1 / RT 8.1. : KB4019215 - Windows Server 2012 R2 : KB4019215 - Windows 10 : KB4019474 - Windows 10 Version 1511 : KB4019473 - Windows 10 Version 1607 : KB4019472 - Windows 10 Version 1703 : KB4016871 - Windows Server 2016 : KB4019472",
-        "solution_cn": "厂商已发布升级程序修复该漏洞，请及时下载更新： https://support.microsoft.com/zh-cn/help/4025687/microsoft-security-advisory-4025685-guidance-for-older-platforms",
-        "cve": "",
-        "plugin_id": "100464"
-    },
-    "999999": {
-        "name_en": "Microsoft Windows SMBv1 Multiple Vulnerabilities",
-        "name_cn": "",
-        "risk_en": "High",
-        "risk_cn": "高危",
-        "describe_en": "The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1) enabled. It is, therefore, affected by multiple vulnerabilities : - Multiple information disclosure vulnerabilities exist in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of SMBv1 packets. An unauthenticated, remote attacker can exploit these vulnerabilities, via a specially crafted SMBv1 packet, to disclose sensitive information. (CVE-2017-0267, CVE-2017-0268, CVE-2017-0270, CVE-2017-0271, CVE-2017-0274, CVE-2017-0275, CVE-2017-0276) - Multiple denial of service vulnerabilities exist in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of requests. An unauthenticated, remote attacker can exploit these vulnerabilities, via a specially crafted SMB request, to cause the system to stop responding. (CVE-2017-0269, CVE-2017-0273, CVE-2017-0280) - Multiple remote code execution vulnerabilities exist in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of SMBv1 packets. An unauthenticated, remote attacker can exploit these vulnerabilities, via a specially crafted SMBv1 packet, to execute arbitrary code. (CVE-2017-0272, CVE-2017-0277, CVE-2017-0278, CVE-2017-0279) Depending on the host's security policy configuration, this plugin cannot always correctly determine if the Windows host is vulnerable if the host is running a later Windows version (i.e., Windows 8.1, 10, 2012, 2012 R2, and 2016) specifically that named pipes and shares are allowed to be accessed remotely and anonymously. Tenable does not recommend this configuration, and the hosts should be checked locally for patches with one of the following plugins, depending on the Windows version : 100054, 100055, 100057, 100059, 100060, or 100061.",
-        "describe_cn": "",
-        "solution_en": "Apply the applicable security update for your Windows version : - Windows Server 2008 : KB4018466 - Windows 7 : KB4019264 - Windows Server 2008 R2 : KB4019264 - Windows Server 2012 : KB4019216 - Windows 8.1 / RT 8.1. : KB4019215 - Windows Server 2012 R2 : KB4019215 - Windows 10 : KB4019474 - Windows 10 Version 1511 : KB4019473 - Windows 10 Version 1607 : KB4019472 - Windows 10 Version 1703 : KB4016871 - Windows Server 2016 : KB4019472",
-        "solution_cn": "",
-        "cve": "CVE-2017-0279"
-    },
     "18405": {
         "name_en": "Microsoft Windows Remote Desktop Protocol Server Man-in-the-Middle Weakness",
         "name_cn": "微软Windows远程桌面协议服务器中间人攻击漏洞",
@@ -81,6 +10,18 @@
         "solution_cn": "[1]如果支持的话，RDP使用SSL作为传输层 [2]“只允许使用网络级身份验证的电脑运行远程桌面建立连接”设置为启用",
         "cve": "",
         "plugin_id": "18405"
+    },
+    "30218": {
+        "name_en": "Terminal Services Encryption Level is not FIPS-140 Compliant",
+        "name_cn": "终端服务加密级别不符合FIPS-140",
+        "risk_en": "Low",
+        "risk_cn": "低危",
+        "describe_en": "The encryption setting used by the remote Terminal Services service is not FIPS-140 compliant.",
+        "describe_cn": "远程终端服务使用的加密设置不符合FIPS-140。",
+        "solution_en": "Change RDP encryption level to : 4. FIPS Compliant",
+        "solution_cn": "将RDP加密级别更改为：4.FIPS兼容",
+        "cve": "",
+        "plugin_id": "30218"
     },
     "35291": {
         "name_en": "SSL Certificate Signed using Weak Hashing Algorithm",
@@ -178,6 +119,18 @@
         "cve": "",
         "plugin_id": "65821"
     },
+    "79638": {
+        "name_en": "MS14-066: Vulnerability in Schannel Could Allow Remote Code Execution (2992611) (uncredentialed check)",
+        "name_cn": "MS14-066：Schannel 远程代码执行漏洞",
+        "risk_en": "Critical",
+        "risk_cn": "紧急",
+        "describe_en": "The remote Windows host is affected by a remote code execution vulnerability due to improper processing of packets by the Secure Channel (Schannel) security package. An attacker can exploit this issue by sending specially crafted packets to a Windows server. Note that this plugin sends a client Certificate TLS handshake message followed by a CertificateVerify message. Some Windows hosts will close the connection upon receiving a client certificate for which it did not ask for with a CertificateRequest message. In this case, the plugin cannot proceed to detect the vulnerability as the CertificateVerify message cannot be sent.",
+        "describe_cn": "MS14-066 (CVE-2014-6321) 是存在于Microsoft的schannel.dll中的TLS堆缓冲区溢出漏洞。",
+        "solution_en": "Microsoft has released a set of patches for Windows 2003, Vista, 2008, 7, 2008 R2, 8, 2012, 8.1, and 2012 R2.",
+        "solution_cn": "目前厂商已经发布了升级补丁以修复此安全问题，补丁获取链接： https://technet.microsoft.com/library/security/ms14-066",
+        "cve": "",
+        "plugin_id": "79638"
+    },
     "90510": {
         "name_en": "MS16-047: Security Update for SAM and LSAD Remote Protocols (3148527) (Badlock) (uncredentialed check)",
         "name_cn": "Windows SAM 和 LSAD 降级漏洞",
@@ -189,6 +142,30 @@
         "solution_cn": "请选择合适的版本的补丁进行Windows 更新https://technet.microsoft.com/zh-cn/library/security/ms16-047.aspx#ID0EPOAC",
         "cve": "",
         "plugin_id": "90510"
+    },
+    "97833": {
+        "name_en": "MS17-010: Security Update for Microsoft Windows SMB Server (4013389) (uncredentialed check)",
+        "name_cn": "Windows SMB 远程代码执行漏洞",
+        "risk_en": "High",
+        "risk_cn": "高危",
+        "describe_en": "The remote Windows host is affected by the following vulnerabilities : - Multiple remote code execution vulnerabilities exist in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of certain requests. An unauthenticated, remote attacker can exploit these vulnerabilities, via a specially crafted packet, to execute arbitrary code. (CVE-2017-0143, CVE-2017-0144, CVE-2017-0145, CVE-2017-0146, CVE-2017-0148) - An information disclosure vulnerability exists in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of certain requests. An unauthenticated, remote attacker can exploit this, via a specially crafted packet, to disclose sensitive information. (CVE-2017-0147) ETERNALBLUE, ETERNALCHAMPION, ETERNALROMANCE, and ETERNALSYNERGY are four of multiple Equation Group vulnerabilities and exploits disclosed on 2017/04/14 by a group known as the Shadow Brokers. WannaCry / WannaCrypt is a ransomware program utilizing the ETERNALBLUE exploit, and EternalRocks is a worm that utilizes seven Equation Group vulnerabilities. Petya is a ransomware program that first utilizes CVE-2017-0199, a vulnerability in Microsoft Office, and then spreads via ETERNALBLUE.",
+        "describe_cn": "当 Microsoft 服务器消息块 1.0 (SMBv1) 服务器处理某些请求时，存在多个远程执行代码漏洞。成功利用这些漏洞的攻击者可以获取在目标系统上执行代码的能力。 为了利用此漏洞，在多数情况下，未经身份验证的攻击者可能向目标 SMBv1 服务器发送经特殊设计的数据包",
+        "solution_en": "Microsoft has released a set of patches for Windows Vista, 2008, 7, 2008 R2, 2012, 8.1, RT 8.1, 2012 R2, 10, and 2016. Microsoft has also released emergency patches for Windows operating systems that are no longer supported, including Windows XP, 2003, and 8. For unsupported Windows operating systems, e.g. Windows XP, Microsoft recommends that users discontinue the use of SMBv1. SMBv1 lacks security features that were included in later SMB versions. SMBv1 can be disabled by following the vendor instructions provided in Microsoft KB2696547. Additionally, US-CERT recommends that users block SMB directly by blocking TCP port 445 on all network boundary devices. For SMB over the NetBIOS API, block TCP ports 137 / 139 and UDP ports 137 / 138 on all network boundary devices.",
+        "solution_cn": "微软已发布官方补丁，具体参考： https://technet.microsoft.com/zh-cn/library/security/MS17-010",
+        "cve": "",
+        "plugin_id": "97833"
+    },
+    "100464": {
+        "name_en": "Microsoft Windows SMBv1 Multiple Vulnerabilities",
+        "name_cn": "Microsoft Windows SMBv1多个漏洞",
+        "risk_en": "High",
+        "risk_cn": "高危",
+        "describe_en": "The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1) enabled. It is, therefore, affected by multiple vulnerabilities : - Multiple information disclosure vulnerabilities exist in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of SMBv1 packets. An unauthenticated, remote attacker can exploit these vulnerabilities, via a specially crafted SMBv1 packet, to disclose sensitive information. (CVE-2017-0267, CVE-2017-0268, CVE-2017-0270, CVE-2017-0271, CVE-2017-0274, CVE-2017-0275, CVE-2017-0276) - Multiple denial of service vulnerabilities exist in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of requests. An unauthenticated, remote attacker can exploit these vulnerabilities, via a specially crafted SMB request, to cause the system to stop responding. (CVE-2017-0269, CVE-2017-0273, CVE-2017-0280) - Multiple remote code execution vulnerabilities exist in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of SMBv1 packets. An unauthenticated, remote attacker can exploit these vulnerabilities, via a specially crafted SMBv1 packet, to execute arbitrary code. (CVE-2017-0272, CVE-2017-0277, CVE-2017-0278, CVE-2017-0279) Depending on the host's security policy configuration, this plugin cannot always correctly determine if the Windows host is vulnerable if the host is running a later Windows version (i.e., Windows 8.1, 10, 2012, 2012 R2, and 2016) specifically that named pipes and shares are allowed to be accessed remotely and anonymously. Tenable does not recommend this configuration, and the hosts should be checked locally for patches with one of the following plugins, depending on the Windows version : 100054, 100055, 100057, 100059, 100060, or 100061.",
+        "describe_cn": "Microsoft Windows SMB中存在安全更新。如果攻击者将特制数 据包发送到Microsoft Server Message Block 1.0（SMBv1）服务 器，则最严重的漏洞可能允许远程执行代码。",
+        "solution_en": "Apply the applicable security update for your Windows version : - Windows Server 2008 : KB4018466 - Windows 7 : KB4019264 - Windows Server 2008 R2 : KB4019264 - Windows Server 2012 : KB4019216 - Windows 8.1 / RT 8.1. : KB4019215 - Windows Server 2012 R2 : KB4019215 - Windows 10 : KB4019474 - Windows 10 Version 1511 : KB4019473 - Windows 10 Version 1607 : KB4019472 - Windows 10 Version 1703 : KB4016871 - Windows Server 2016 : KB4019472",
+        "solution_cn": "厂商已发布升级程序修复该漏洞，请及时下载更新： https://support.microsoft.com/zh-cn/help/4025687/microsoft-security-advisory-4025685-guidance-for-older-platforms",
+        "cve": "",
+        "plugin_id": "100464"
     },
     "104743": {
         "name_en": "TLS Version 1.0 Protocol Detection",
@@ -202,15 +179,28 @@
         "cve": "",
         "plugin_id": "104743"
     },
-    "30218": {
-        "name_en": "Terminal Services Encryption Level is not FIPS-140 Compliant",
-        "name_cn": "",
-        "risk_en": "Low",
-        "risk_cn": "低危",
-        "describe_en": "The encryption setting used by the remote Terminal Services service is not FIPS-140 compliant.",
-        "describe_cn": "",
-        "solution_en": "Change RDP encryption level to : 4. FIPS Compliant",
-        "solution_cn": "",
-        "cve": ""
+    "125313": {
+        "name_en": "Microsoft RDP RCE (CVE-2019-0708) (BlueKeep) (uncredentialed check)",
+        "name_cn": "Microsoft Remote Desktop Services 输入验证错误漏洞",
+        "risk_en": "Critical",
+        "risk_cn": "紧急",
+        "describe_en": "The remote host is affected by a remote code execution vulnerability in Remote Desktop Protocol (RDP). An unauthenticated, remote attacker can exploit this, via a series of specially crafted requests, to execute arbitrary code.",
+        "describe_cn": "Windows系列服务器于2019年5月15号，被爆出高危漏洞，该漏洞影响范围较广，windows2003、windows2008、windows2008 R2、windows xp * 系统都会遭到攻击，该服务器漏洞利用方式是通过远程桌面端口3389，RDP协议进行攻击的 。CVE-2019-0708漏洞是通过检查用户的身份认证，导致可以绕过认证，不用任何的交互，直接通过rdp协议进行连接发送恶意代码执行命令到服务器中去。这个漏洞是今年来说危害严重性最大的漏洞，换句话说，该漏洞是“可传播的”，这意味着任何利用该漏洞的恶意软件都可能从受影响的计算机传播到受影响的计算机，就像2017年WannaCry恶意软件在全球蔓延一样，跟之前的勒索，永恒之蓝病毒差不多。 *备注：微软不在对 windows-Xp 和windows 2003 提供安全更新（对windows10和8无影响）",
+        "solution_en": "Microsoft has released a set of patches for Windows XP, 2003, 2008, 7, and 2008 R2.",
+        "solution_cn": "目前厂商已发布升级补丁以修复漏洞，补丁获取链接： https://portal.msrc.microsoft.com/zh-CN/security-guidance/advisory/CVE-2019-0708",
+        "cve": "",
+        "plugin_id": "125313"
+    },
+    "999999": {
+        "name_en": "Microsoft Windows SMBv1 Multiple Vulnerabilities",
+        "name_cn": "Microsoft Windows SMBv1多个漏洞",
+        "risk_en": "High",
+        "risk_cn": "高危",
+        "describe_en": "The remote Windows host has Microsoft Server Message Block 1.0 (SMBv1) enabled. It is, therefore, affected by multiple vulnerabilities : - Multiple information disclosure vulnerabilities exist in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of SMBv1 packets. An unauthenticated, remote attacker can exploit these vulnerabilities, via a specially crafted SMBv1 packet, to disclose sensitive information. (CVE-2017-0267, CVE-2017-0268, CVE-2017-0270, CVE-2017-0271, CVE-2017-0274, CVE-2017-0275, CVE-2017-0276) - Multiple denial of service vulnerabilities exist in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of requests. An unauthenticated, remote attacker can exploit these vulnerabilities, via a specially crafted SMB request, to cause the system to stop responding. (CVE-2017-0269, CVE-2017-0273, CVE-2017-0280) - Multiple remote code execution vulnerabilities exist in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of SMBv1 packets. An unauthenticated, remote attacker can exploit these vulnerabilities, via a specially crafted SMBv1 packet, to execute arbitrary code. (CVE-2017-0272, CVE-2017-0277, CVE-2017-0278, CVE-2017-0279) Depending on the host's security policy configuration, this plugin cannot always correctly determine if the Windows host is vulnerable if the host is running a later Windows version (i.e., Windows 8.1, 10, 2012, 2012 R2, and 2016) specifically that named pipes and shares are allowed to be accessed remotely and anonymously. Tenable does not recommend this configuration, and the hosts should be checked locally for patches with one of the following plugins, depending on the Windows version : 100054, 100055, 100057, 100059, 100060, or 100061.",
+        "describe_cn": "远程Windows主机已启用Microsoft Server Message Block 1.0（SMBv1）。因此，它受到多个漏洞的影响：-由于不正确处理SMBv1数据包，Microsoft Server Message Block 1.0（SMBv1）中存在多个信息泄漏漏洞。未经验证的远程攻击者可以通过巧尽心思构建的SMBv1数据包利用这些漏洞来泄露敏感信息(CVE-2017-0267、CVE-2017-0268、CVE-2017-0270、CVE-2017-0271、CVE-2017-0274、CVE-2017-0275、CVE-2017-0276）-由于请求处理不当，Microsoft Server Message Block 1.0（SMBv1）中存在多个拒绝服务漏洞。未经验证的远程攻击者可以通过巧尽心思构建的SMB请求利用这些漏洞，使系统停止响应(CVE-2017-0269、CVE-2017-0273、CVE-2017-0280）-由于不正确处理SMBv1数据包，Microsoft Server Message Block 1.0（SMBv1）中存在多个远程代码执行漏洞。未经验证的远程攻击者可以通过巧尽心思构建的SMBv1数据包利用这些漏洞执行任意代码(CVE-2017-0272、CVE-2017-0277、CVE-2017-0278、CVE-2017-0279）根据主机的安全策略配置，如果主机运行的是更高版本的Windows（即Windows 8.1、10、2012、2012 R2，特别是允许远程匿名访问命名管道和共享。Tenable不建议使用此配置，应在本地检查主机是否有以下插件之一的修补程序，具体取决于Windows版本：100054、100055、100057、100059、100060或100061。",
+        "solution_en": "Apply the applicable security update for your Windows version : - Windows Server 2008 : KB4018466 - Windows 7 : KB4019264 - Windows Server 2008 R2 : KB4019264 - Windows Server 2012 : KB4019216 - Windows 8.1 / RT 8.1. : KB4019215 - Windows Server 2012 R2 : KB4019215 - Windows 10 : KB4019474 - Windows 10 Version 1511 : KB4019473 - Windows 10 Version 1607 : KB4019472 - Windows 10 Version 1703 : KB4016871 - Windows Server 2016 : KB4019472",
+        "solution_cn": "为您的Windows版本应用适用的安全更新：-Windows Server 2008:KB4018466-Windows 7:KB4019264-Windows Server 2008 R2:KB4019264-Windows Server 2012:KB4019216-Windows 8.1/RT 8.1.：KB4019264KB4019215-Windows Server 2012 R2:KB4019215-Windows 10:KB4019474-Windows 10版本1511:KB4019473-Windows 10版本1607:KB4019472-Windows 10版本1703:KB4016871-Windows Server 2016:KB4019472",
+        "cve": "CVE-2017-0279",
+        "plugin_id": "999999"
     }
 }
