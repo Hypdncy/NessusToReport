@@ -68,11 +68,11 @@ class TranBase(object):
         if not translate_status:
             logging.info("------翻译未开启")
             return cn_resinfos
-        logging.info("------翻译漏洞总数：{}".format(self.tran_count))
 
         sem = None
         tran_func = self._tran_http
         en_reqinfos = self._make_en_reqinfos()
+        logging.info("------翻译漏洞总数：{}".format(self.tran_count))
 
         if translate_sem > 0:
             tran_func = self._tran_http_with_sem
