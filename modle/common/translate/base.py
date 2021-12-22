@@ -40,8 +40,9 @@ class TranBase(object):
 
     def __init__(self, LOOPHOLES: Loopholes):
         self.LOOPHOLES = LOOPHOLES
-        self.timeout = ClientTimeout(total=30, connect=10, sock_connect=10, sock_read=10)
+        self.timeout = ClientTimeout(total=30, connect=30, sock_connect=30, sock_read=30)
         self.tran_count = 0
+        self.tran_number = 0
 
     def _check_en2cn(self):
         for plugin_id, info in self.LOOPHOLES.items():
@@ -59,6 +60,8 @@ class TranBase(object):
                 async with session.request(method=reqinfo["method"], url=reqinfo["url"],
                                            **reqinfo["kwargs"]) as response:
                     data = await response.json()
+                    self.tran_number += 1
+                    print("------翻译漏洞进度：{0}/{1}".format(int(self.tran_number / 3) + 1, self.tran_count), end='\r')
                     return [reqinfo["plugin_id"], reqinfo["type_cn"], data]
             except Exception as e:
                 print(e)
