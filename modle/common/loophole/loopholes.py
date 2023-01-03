@@ -82,7 +82,7 @@ class Loopholes(LoopholesBase):
                                     nessus_only_ip_end).int()):
                                 continue
                         else:
-                            if not (IPy.IP(host) in IPy.IP(nessus_only_ip)):
+                            if not (IPy.IP(host) in IPy.IP(nessus_only_ip, make_net=True)):
                                 continue
 
                     # 然后判断是否在忽略范围内，忽略范围为空时自动跳过
@@ -95,7 +95,7 @@ class Loopholes(LoopholesBase):
                                     nessus_only_ip_end).int():
                                 continue
                         else:
-                            if IPy.IP(host) in IPy.IP(nessus_only_ip):
+                            if IPy.IP(host) in IPy.IP(nessus_only_ip, make_net=True):
                                 continue
 
                     # 最后判断是否在插件ID组内、在风险范围内
