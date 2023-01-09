@@ -168,7 +168,7 @@ class Loopholes(LoopholesBase):
         """
         pass
 
-    def _dump_loops(self):
+    def dump_loops(self):
         """
         序列化Error
         :return:

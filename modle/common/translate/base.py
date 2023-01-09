@@ -33,7 +33,8 @@ import asyncio
 from aiohttp.client import ClientSession, ClientTimeout
 
 from modle.common.loophole.loopholes import Loopholes
-from cnf.const import translate_sem, translate_qps, translate_status
+from cnf.const import translate_sem, translate_qps, translate_status, translate_auto_db, json_loops_error, vuln_db_file
+from modle.common.update.updb import UpdateDB
 
 
 class TranBase(object):
@@ -43,6 +44,7 @@ class TranBase(object):
         self.timeout = ClientTimeout(total=30, connect=30, sock_connect=30, sock_read=30)
         self.tran_count = 0
         self.tran_number = 0
+        self.update_db = UpdateDB(vuln_db_file)
 
     def _check_en2cn(self):
         for plugin_id, info in self.LOOPHOLES.items():
@@ -105,5 +107,7 @@ class TranBase(object):
         for plugin_id, type_cn, resinfo in cn_resinfos:
             self.LOOPHOLES[plugin_id][type_cn] = self._analysis_cn_resinfo(resinfo)
         self._check_en2cn()
-        self.LOOPHOLES._dump_loops()
+        self.LOOPHOLES.dump_loops()
+        if translate_auto_db:
+            self.update_db.update_db_from_file(json_loops_error)
         logging.info("------翻译完成")
