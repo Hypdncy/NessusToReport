@@ -31,15 +31,17 @@ import hashlib
 import time
 import uuid
 
+from aiohttp import ClientResponse
+
 from cnf.const import translate_youdao_url, translate_youdao_appkey, translate_youdao_appsecret, translate_order
 from modle.common.loophole.loopholes import Loopholes
 from modle.common.translate.base import TranBase
 
 
-class TranYoudao(TranBase):
+class TranYouDao(TranBase):
 
     def __init__(self, LOOPHOLES: Loopholes):
-        super(TranYoudao, self).__init__(LOOPHOLES)
+        super(TranYouDao, self).__init__(LOOPHOLES)
 
     def _make_en_reqinfos(self):
 
@@ -88,8 +90,11 @@ class TranYoudao(TranBase):
 
         return en_reqinfos
 
-    def _analysis_cn_resinfo(self, resinfo):
+    async def _analysis_cn_resinfo(self, response: ClientResponse, type_cn):
         """
-        解析响应体
+        解析响应体中的中文数据
         """
-        return resinfo["translation"]
+        res_json = await response.json()
+        return {
+            type_cn: res_json["translation"]
+        }

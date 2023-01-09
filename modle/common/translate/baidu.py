@@ -32,6 +32,8 @@
 import hashlib
 import random
 
+from aiohttp import ClientResponse
+
 from cnf.const import translate_baidu_url, translate_baidu_appid, translate_baidu_secret
 from cnf.const import translate_order
 from modle.common.loophole.loopholes import Loopholes
@@ -80,8 +82,11 @@ class TranBaidu(TranBase):
 
         return en_reqinfos
 
-    def _analysis_cn_resinfo(self, resinfo):
+    async def _analysis_cn_resinfo(self, response: ClientResponse, type_cn):
         """
         解析响应体中的中文数据
         """
-        return resinfo["trans_result"][0]["dst"]
+        res_json = await response.json()
+        return {
+            type_cn: res_json["trans_result"][0]["dst"]
+        }

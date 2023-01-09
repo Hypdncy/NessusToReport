@@ -31,6 +31,7 @@ import asyncio
 import logging
 from abc import abstractmethod
 
+from aiohttp import ClientResponse
 from aiohttp.client import ClientSession, ClientTimeout
 
 from cnf.const import translate_sem, translate_qps, translate_status, translate_auto_db, json_loops_error, vuln_db_file
@@ -58,14 +59,15 @@ class TranBase(object):
 
     async def _tran_http(self, reqinfo, sem=None):
         await asyncio.sleep(1)
-        async with ClientSession(timeout=self.timeout) as session:
+        async with ClientSession(timeout=self.timeout, headers=reqinfo.get("headers", {})) as session:
             try:
                 async with session.request(method=reqinfo["method"], url=reqinfo["url"],
                                            **reqinfo["kwargs"]) as response:
-                    data = await response.json()
+
+                    data = await self._analysis_cn_resinfo(response, reqinfo["type_cn"])
                     self.tran_number += 1
                     print("------翻译漏洞进度：{0}/{1}".format(int(self.tran_number / 3) + 1, self.tran_count), end='\r')
-                    return [reqinfo["plugin_id"], reqinfo["type_cn"], data]
+                    return [reqinfo["plugin_id"], data]
             except Exception as e:
                 print(e)
 
@@ -100,13 +102,14 @@ class TranBase(object):
         pass
 
     @abstractmethod
-    def _analysis_cn_resinfo(self, resinfo):
+    async def _analysis_cn_resinfo(self, response: ClientResponse, type_cn):
         pass
 
     def run(self):
         cn_resinfos = asyncio.run(self._async_main())
-        for plugin_id, type_cn, resinfo in cn_resinfos:
-            self.LOOPHOLES[plugin_id][type_cn] = self._analysis_cn_resinfo(resinfo)
+        for plugin_id, resinfo in cn_resinfos:
+            for type_cn, cn_text in resinfo.items():
+                self.LOOPHOLES[plugin_id][type_cn] = cn_text
         self._check_en2cn()
         self.LOOPHOLES.dump_loops()
         if translate_auto_db:

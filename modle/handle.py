@@ -30,8 +30,11 @@
 
 import logging
 
+from cnf.const import translate_tool
 from modle.common.loophole.loopholes import Loopholes
 from modle.common.translate.baidu import TranBaidu
+from modle.common.translate.tenable import TranTenable
+from modle.common.translate.youdao import TranYouDao
 from modle.data.hosts import DataHosts
 from modle.data.loops import DataLoops
 from modle.docx.host import DocxHost
@@ -52,7 +55,12 @@ class Handle(object):
         self.LOOPHOLES.run()
 
         logging.info("---开始翻译数据")
-        TranBaidu(self.LOOPHOLES).run()
+        func_translate_tools = {
+            "BaiDu": TranBaidu,
+            "YouDao": TranYouDao,
+            "Tenable": TranTenable
+        }
+        func_translate_tools[translate_tool](self.LOOPHOLES).run()
 
     def run_hosts(self):
         """

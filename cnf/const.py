@@ -37,6 +37,11 @@ json_loops_global = "./logs/loops_global.json"
 
 template_file = "./template/主机扫描报告模板-202104.docx"
 
+# 翻译工具: BaiDu YouDao Tenable
+# BaiDu :   百度翻译，需要配置key、secret
+# YouDao :  网易翻译，需要配置key、secret
+# Tenable : 官网翻译，无需配置
+translate_tool = "Tenable"
 translate_status = True
 translate_auto_db = True  # 翻译结果默认添加到db中
 translate_sem = 9  # 协程限制
@@ -46,8 +51,10 @@ translate_baidu_appid = "XXXXXX"
 translate_baidu_secret = "XXXXXX"
 
 translate_youdao_url = "https://openapi.youdao.com/api"
-translate_youdao_appkey = "xxxxxxxx"
-translate_youdao_appsecret = "xxxxxxxx"
+translate_youdao_appkey = ""
+translate_youdao_appsecret = ""
+
+translate_tenable_url = "https://zh-cn.tenable.com/plugins/nessus/"
 
 translate_order = {
     "name_en": "name_cn",
