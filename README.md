@@ -3,7 +3,9 @@
 > Github地址:`https://github.com/Hypdncy/NessusToReport`
 
 **不需要KEY也可以自动翻译、并且翻译后自动保存在本地数据库**
+
 **不需要KEY也可以自动翻译、并且翻译后自动保存在本地数据库**
+
 **不需要KEY也可以自动翻译、并且翻译后自动保存在本地数据库**
 
 这是一个nessus自动报告生成工具，可以用来自动生成nessus扫描器的中文报告--NessusToReport，程序有两种报告方式：
@@ -26,10 +28,11 @@
 root@hypdncy:~# pip install -r requirement.txt
 ```
 #### 使用方法
+
 1. 导出nessus的csv，放置到`./data/nessus`目录下
-1. 更新自己的实施范围`./data/systems.csv`
-1. 更新自己的配置信息`./config.py`
-1. 执行命令`python main.py`
+2. 更新自己的实施范围`./data/systems.csv`
+3. 更新自己的配置信息`./config.py`
+4. 执行命令`python main.py`
 
 ```shell script
 root@hypdncy:~# python main.py # 默认出漏洞排序类型扫描报告
