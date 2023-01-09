@@ -60,10 +60,15 @@ root@hypdncy:~# python main.py -t host  # 指定单个主机类型扫描报告
 
 记得使用完以下功能后将他们注释，防止下次生成报告时，使用该次的配置
 
+#### 配置自定义IP限制
+
+- 配置说明：该配置在生成报告时会限制与配置范围`IP`的所有漏洞信息，主要用于段扫描时限制主机范围
+- 配置位置：config.py中`config.nessus_only_ips`参数
+
 #### 配置自定义IP忽略
 
 - 配置说明：该配置在生成报告时会忽略与配置相同`IP`的所有漏洞信息，主要用于段扫描时忽略本机漏洞
-- 配置位置：config.py中`config.nessus_ignore_ids`参数
+- 配置位置：config.py中`config.nessus_ignore_ips`参数
 
 #### 配置自定义漏洞忽略
 
@@ -84,6 +89,7 @@ root@hypdncy:~# python main.py -t host  # 指定单个主机类型扫描报告
 
 1. 项目不定期发布漏洞库vuln.db，在release中可以下载，并替换到./cnf/目录下
 2. 各位可以将`./logs/loops_error.json`中的信息push到我的github，我将会翻译并将其更新其到数据库中
+3. 在翻译漏洞后可以手动更新vuln.db，`cd ./modle/common/update && python updb.py`
 
 ## 演示图
 
