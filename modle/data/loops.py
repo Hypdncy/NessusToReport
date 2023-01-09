@@ -29,11 +29,10 @@
 # ------------------------------------------------------------
 from IPy import IP
 
-from modle.data.base import DataBase
-from modle.common.loophole.loopholes import Loopholes
-
 from cnf.const import risk_loops_conclusion, risk_scores
-from cnf.data import cnf_data, loop_host_ports, system_host_names
+from cnf.data import cnf_data, loop_host_ports
+from modle.common.loophole.loopholes import Loopholes
+from modle.data.base import DataBase
 
 
 class DataLoops(DataBase):

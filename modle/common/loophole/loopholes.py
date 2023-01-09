@@ -27,21 +27,20 @@
 #    ````':.          ':::::::::'                  ::::..
 #                       '.:::::'                    ':'````..
 # ------------------------------------------------------------
+import csv
+import json
 import logging
 import re
-import json
-import csv
 import sqlite3
 from pathlib import Path
 
 import IPy
 
-from modle.common.loophole.base import LoopholesBase
-
 from cnf.const import json_loops_error, json_loops_global, risk_en2cn, vuln_db_info, vuln_db_file, vuln_info, \
     risk_range_en, nessus_csv_dir, nessus_csv_order
-from config import nessus_vuln_self, nessus_risk_self, nessus_ignore_ids, nessus_ignore_ips, nessus_only_ips
 from cnf.data import host_loop_ports, loop_host_ports
+from config import nessus_vuln_self, nessus_risk_self, nessus_ignore_ids, nessus_ignore_ips, nessus_only_ips
+from modle.common.loophole.base import LoopholesBase
 
 
 class Loopholes(LoopholesBase):

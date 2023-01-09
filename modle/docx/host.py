@@ -30,11 +30,10 @@
 
 from docx import Document
 
-from modle.common.loophole.loopholes import Loopholes
-from modle.docx.hosts import DocxHosts
-
 from cnf.const import template_file, risk_loops_conclusion, company_name, table_host_ips
 from cnf.data import cnf_data, host_loop_ports
+from modle.common.loophole.loopholes import Loopholes
+from modle.docx.hosts import DocxHosts
 
 
 class DocxHost(DocxHosts):

@@ -30,11 +30,10 @@
 
 import csv
 
-from modle.common.loophole.loopholes import Loopholes
-
 from cnf.const import systems_file
 from cnf.data import cnf_data, system_host_names
 from config import config_data
+from modle.common.loophole.loopholes import Loopholes
 
 
 class DataBase(object):

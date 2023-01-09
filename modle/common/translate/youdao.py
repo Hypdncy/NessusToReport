@@ -27,12 +27,12 @@
 #    ````':.          ':::::::::'                  ::::..
 #                       '.:::::'                    ':'````..
 # ------------------------------------------------------------
-import uuid
 import hashlib
 import time
+import uuid
 
-from modle.common.loophole.loopholes import Loopholes
 from cnf.const import translate_youdao_url, translate_youdao_appkey, translate_youdao_appsecret, translate_order
+from modle.common.loophole.loopholes import Loopholes
 from modle.common.translate.base import TranBase
 
 

@@ -29,13 +29,13 @@
 # ------------------------------------------------------------
 
 
-import random
 import hashlib
+import random
 
+from cnf.const import translate_baidu_url, translate_baidu_appid, translate_baidu_secret
 from cnf.const import translate_order
 from modle.common.loophole.loopholes import Loopholes
 from modle.common.translate.base import TranBase
-from cnf.const import translate_baidu_url, translate_baidu_appid, translate_baidu_secret
 
 
 class TranBaidu(TranBase):

@@ -27,13 +27,14 @@
 #    ````':.          ':::::::::'                  ::::..
 #                       '.:::::'                    ':'````..
 # ------------------------------------------------------------
+import asyncio
 import logging
 from abc import abstractmethod
-import asyncio
+
 from aiohttp.client import ClientSession, ClientTimeout
 
-from modle.common.loophole.loopholes import Loopholes
 from cnf.const import translate_sem, translate_qps, translate_status, translate_auto_db, json_loops_error, vuln_db_file
+from modle.common.loophole.loopholes import Loopholes
 from modle.common.update.updb import UpdateDB
 
 

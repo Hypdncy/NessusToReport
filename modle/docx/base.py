@@ -28,15 +28,16 @@
 #                       '.:::::'                    ':'````..
 # ------------------------------------------------------------
 
-import re
 import logging
 import platform
+import re
 from pathlib import Path
+
 from docx import Document
 
 from cnf.const import table_host_ips, company_name
-from modle.common.loophole.loopholes import Loopholes
 from cnf.data import cnf_data, system_host_names
+from modle.common.loophole.loopholes import Loopholes
 
 
 class DocxBase(object):

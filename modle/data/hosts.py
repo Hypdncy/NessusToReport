@@ -29,11 +29,10 @@
 # ------------------------------------------------------------
 
 
-from modle.common.loophole.loopholes import Loopholes
-from modle.data.base import DataBase
-
 from cnf.const import risk_hosts_conclusion, risk_scores
 from cnf.data import cnf_data, host_loop_ports
+from modle.common.loophole.loopholes import Loopholes
+from modle.data.base import DataBase
 
 
 class DataHosts(DataBase):

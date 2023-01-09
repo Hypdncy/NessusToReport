@@ -32,10 +32,8 @@ import logging
 
 from modle.common.loophole.loopholes import Loopholes
 from modle.common.translate.baidu import TranBaidu
-
 from modle.data.hosts import DataHosts
 from modle.data.loops import DataLoops
-
 from modle.docx.host import DocxHost
 from modle.docx.hosts import DocxHosts
 from modle.docx.loops import DocxLoops

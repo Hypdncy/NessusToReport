@@ -32,10 +32,10 @@ import logging
 from docx import Document
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 
-from modle.common.loophole.loopholes import Loopholes
-from modle.docx.base import DocxBase
 from cnf.const import template_file, company_name
 from cnf.data import cnf_data, loop_host_ports
+from modle.common.loophole.loopholes import Loopholes
+from modle.docx.base import DocxBase
 
 
 class DocxLoops(DocxBase):
