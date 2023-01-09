@@ -72,7 +72,9 @@ class Loopholes(LoopholesBase):
                 for row in rows:
                     host = str(row[nessus_csv_order["host"]])
                     plugin_id = str(row[nessus_csv_order["plugin_id"]])
+
                     # 优先判断是否在限制范围内，限制范围为空时自动跳过
+                    nessus_only_ip_flag = False
                     for nessus_only_ip in nessus_only_ips:
                         if "-" in nessus_only_ip:
                             tmp_ips = nessus_only_ip.split("-")
@@ -80,23 +82,32 @@ class Loopholes(LoopholesBase):
                             nessus_only_ip_end = tmp_ips
                             if not (IPy.IP(nessus_only_ip_start).int() <= IPy.IP(host).int() <= IPy.IP(
                                     nessus_only_ip_end).int()):
-                                continue
+                                nessus_only_ip_flag = True
+                                break
                         else:
-                            if not (IPy.IP(host) in IPy.IP(nessus_only_ip, make_net=True)):
-                                continue
+                            if IPy.IP(host) not in IPy.IP(nessus_only_ip, make_net=True):
+                                nessus_only_ip_flag = True
+                                break
+                    if nessus_only_ip_flag:
+                        continue
 
                     # 然后判断是否在忽略范围内，忽略范围为空时自动跳过
+                    nessus_ignore_ip_flag = False
                     for nessus_ignore_ip in nessus_ignore_ips:
                         if "-" in nessus_ignore_ip:
                             tmp_ips = nessus_ignore_ip.split("-")
-                            nessus_only_ip_start = tmp_ips[0]
-                            nessus_only_ip_end = tmp_ips
-                            if IPy.IP(nessus_only_ip_start).int() <= IPy.IP(host).int() <= IPy.IP(
-                                    nessus_only_ip_end).int():
-                                continue
+                            nessus_ignore_ip_start = tmp_ips[0]
+                            nessus_ignore_ip_end = tmp_ips
+                            if IPy.IP(nessus_ignore_ip_start).int() <= IPy.IP(host).int() <= IPy.IP(
+                                    nessus_ignore_ip_end).int():
+                                nessus_ignore_ip_flag = True
+                                break
                         else:
-                            if IPy.IP(host) in IPy.IP(nessus_only_ip, make_net=True):
-                                continue
+                            if IPy.IP(host) in IPy.IP(nessus_ignore_ip, make_net=True):
+                                nessus_ignore_ip_flag = True
+                                break
+                    if nessus_ignore_ip_flag:
+                        continue
 
                     # 最后判断是否在插件ID组内、在风险范围内
                     if plugin_id in nessus_ignore_ids or row[nessus_csv_order["risk_en"]] not in risk_range_en:
