@@ -79,7 +79,7 @@ class Loopholes(LoopholesBase):
                         if "-" in nessus_only_ip:
                             tmp_ips = nessus_only_ip.split("-")
                             nessus_only_ip_start = tmp_ips[0]
-                            nessus_only_ip_end = tmp_ips
+                            nessus_only_ip_end = tmp_ips[1]
                             if not (IPy.IP(nessus_only_ip_start).int() <= IPy.IP(host).int() <= IPy.IP(
                                     nessus_only_ip_end).int()):
                                 nessus_only_ip_flag = True
@@ -97,7 +97,7 @@ class Loopholes(LoopholesBase):
                         if "-" in nessus_ignore_ip:
                             tmp_ips = nessus_ignore_ip.split("-")
                             nessus_ignore_ip_start = tmp_ips[0]
-                            nessus_ignore_ip_end = tmp_ips
+                            nessus_ignore_ip_end = tmp_ips[1]
                             if IPy.IP(nessus_ignore_ip_start).int() <= IPy.IP(host).int() <= IPy.IP(
                                     nessus_ignore_ip_end).int():
                                 nessus_ignore_ip_flag = True
