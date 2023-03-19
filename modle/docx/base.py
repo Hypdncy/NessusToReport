@@ -29,13 +29,14 @@
 # ------------------------------------------------------------
 
 import logging
+import pathlib
 import platform
 import re
 from pathlib import Path
 
 from docx import Document
 
-from cnf.const import table_host_ips, company_name
+from cnf.const import table_host_ips, company_name, output_dir
 from cnf.data import cnf_data, system_host_names
 from modle.common.loophole.loopholes import Loopholes
 
@@ -159,8 +160,13 @@ class DocxBase(object):
                 break
 
     def save(self):
-        filename = "./{0}主机扫描报告-{1}-{2}.docx".format(cnf_data["user"]["name"], self.host, cnf_data["date"]["end"])
+        user_output_dir = pathlib.PurePath(output_dir, cnf_data["user"]["name"])
+        filename = pathlib.PurePath(user_output_dir,
+                                    "{0}主机扫描报告-{1}-{2}.docx".format(cnf_data["user"]["name"], self.host,
+                                                                          cnf_data["date"]["end"]))
+
         logging.info("---保存主机排序文档：{filename}".format(filename=filename))
+        pathlib.Path(user_output_dir).mkdir(parents=True, exist_ok=True)
         self.doc.save(filename)
         return filename
 

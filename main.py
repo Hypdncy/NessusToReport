@@ -40,7 +40,10 @@ if __name__ == "__main__":
     parser.add_argument("-t", "--type", dest="docxtype", type=str, action="store", default="loops",
                         choices=["loops", "hosts", "host", "all"],
                         help="配置文档生成方式")
+    parser.add_argument("-e", "--excel", dest="exceltype", type=str, action="store", default="true",
+                        choices=["true", "false"],
+                        help="配置是否生成excel")
     args = parser.parse_args()
 
-    h = Handle(args.docxtype)
+    h = Handle(args.docxtype, args.exceltype)
     h.run()

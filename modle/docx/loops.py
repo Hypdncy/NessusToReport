@@ -28,11 +28,12 @@
 #                       '.:::::'                    ':'````..
 # ------------------------------------------------------------
 import logging
+import pathlib
 
 from docx import Document
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 
-from cnf.const import template_file, company_name
+from cnf.const import template_file, company_name, output_dir
 from cnf.data import cnf_data, loop_host_ports
 from modle.common.loophole.loopholes import Loopholes
 from modle.docx.base import DocxBase
@@ -46,9 +47,15 @@ class DocxLoops(DocxBase):
         self.host = "漏洞排序"
 
     def save(self):
-        filename = "./{0}主机扫描报告-漏洞排序-{1}.docx".format(cnf_data["user"]["name"], cnf_data["date"]["end"])
-        self.doc.save(filename)
+
+        user_output_dir = pathlib.PurePath(output_dir, cnf_data["user"]["name"])
+        filename = pathlib.PurePath(user_output_dir,
+                                    "{0}主机扫描报告-漏洞排序-{1}.docx".format(cnf_data["user"]["name"],
+                                                                               cnf_data["date"]["end"]))
+
         logging.info("---保存漏洞排序文档：{filename}".format(filename=filename))
+        pathlib.Path(user_output_dir).mkdir(parents=True, exist_ok=True)
+        self.doc.save(filename)
         return filename
 
     def draw_loophole_info(self, plugin_id, info):

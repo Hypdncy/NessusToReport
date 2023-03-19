@@ -62,6 +62,8 @@ translate_order = {
     "solution_en": "solution_cn",
 }
 
+output_dir="./outputs"
+
 table_host_ips = ["序号", "测试对象", "对象名称"]
 
 vuln_db_file = "./cnf/vuln.db"

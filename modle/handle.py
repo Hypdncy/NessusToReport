@@ -40,15 +40,17 @@ from modle.data.loops import DataLoops
 from modle.docx.host import DocxHost
 from modle.docx.hosts import DocxHosts
 from modle.docx.loops import DocxLoops
+from modle.xlsx.base import XlsxBase
 
 
 class Handle(object):
-    def __init__(self, docxtype):
+    def __init__(self, docxtype, exceltype):
         """
         初始化类，并开始函数
         :param scantype:
         """
         self.docxtype = docxtype
+        self.exceltype = exceltype
         logging.info("开始初始化数据")
         logging.info("---开始读取数据")
         self.LOOPHOLES = Loopholes()
@@ -94,6 +96,11 @@ class Handle(object):
         logging.info("---开始处理文档")
         DocxHost(self.LOOPHOLES).run()
 
+    def run_excel(self):
+        logging.info("开始生成主机扫描报表")
+        logging.info("---开始处理表格")
+        XlsxBase(self.LOOPHOLES).run()
+
     def run_all(self):
         self.run_loops()
         self.run_hosts()
@@ -107,4 +114,7 @@ class Handle(object):
             "all": self.run_all
         }
         func_type_run[self.docxtype]()
+
+        if self.exceltype == "true":
+            self.run_excel()
         logging.info("---程序结束---")
