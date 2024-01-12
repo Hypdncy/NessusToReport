@@ -16,6 +16,11 @@
 
 ## 使用说明
 
+### 数据库
+
+由于github LFS超额，数据库更新链接如下，感谢@MatriX925 的更新
+链接: https://pan.baidu.com/s/1a4jcHCY8G-q65nmehlMTfw?pwd=gwtd 提取码: gwtd
+
 #### 安装方法
 
 建议在windows下安装python3.8+版本
