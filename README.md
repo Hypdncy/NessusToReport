@@ -18,8 +18,9 @@
 
 ### 数据库
 
-由于github LFS超额，数据库更新链接如下，感谢@MatriX925 的更新
+由于github LFS超额，在github上使用原数据库，新的数据库更新链接如下，感谢@MatriX925 的更新
 链接: https://pan.baidu.com/s/1a4jcHCY8G-q65nmehlMTfw?pwd=gwtd 提取码: gwtd
+下载后将文件放置在cnf目录下替换`vuln.db`即可
 
 #### 安装方法
 
