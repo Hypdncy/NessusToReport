@@ -69,7 +69,9 @@ class TranBase(object):
                     print("------翻译漏洞进度：{0}/{1}".format(int(self.tran_number / 3) + 1, self.tran_count), end='\r')
                     return [reqinfo["plugin_id"], data]
             except Exception as e:
-                print(e)
+                logging.error("------翻译失败：plugin_id={}".format(int(reqinfo["plugin_id"])))
+                logging.error(e)
+                return [0, {}]
 
     async def _async_main(self):
         cn_resinfos = list()
@@ -108,6 +110,9 @@ class TranBase(object):
     def run(self):
         cn_resinfos = asyncio.run(self._async_main())
         for plugin_id, resinfo in cn_resinfos:
+            # 翻译失败的直接略过
+            if not (plugin_id and resinfo):
+                continue
             for type_cn, cn_text in resinfo.items():
                 self.LOOPHOLES[plugin_id][type_cn] = cn_text
         self._check_en2cn()
