@@ -54,7 +54,7 @@ translate_youdao_url = "https://openapi.youdao.com/api"
 translate_youdao_appkey = ""
 translate_youdao_appsecret = ""
 
-translate_tenable_url = "https://zh-cn.tenable.com/plugins/nessus/"
+translate_tenable_url = "https://www.tenablecloud.cn/plugins/nessus/"
 
 translate_order = {
     "name_en": "name_cn",
