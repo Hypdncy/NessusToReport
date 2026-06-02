@@ -4,3 +4,4 @@ pywin32
 aiohttp
 IPy
 beautifulsoup4
+openai

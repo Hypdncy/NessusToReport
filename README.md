@@ -45,7 +45,16 @@ root@hypdncy:~# python main.py -t host  # 指定单个主机类型扫描报告
 
 ## 配置说明
 
-本工具具有翻译功能，需要自己申请百度、有道翻译API的key，并将其配置到`./cnf/const.py`
+本工具具有翻译功能，支持多种翻译引擎：
+
+| 翻译引擎 | 配置难度 | 说明 |
+|----------|----------|------|
+| Tenable | 简单 | 官网翻译，无需配置 |
+| BaiDu | 中等 | 需要百度翻译API Key |
+| YouDao | 中等 | 需要有道翻译API Key |
+| **OpenAI** | 简单 | 支持DeepSeek/GPT等模型，配置灵活 |
+
+详情请参考 [翻译插件说明](modle/common/translate/README.md)。
 
 > 百度API的Key最好进行个人高级认证，这样翻译的QPS为10，否则翻译时会造成KeyError的情况
 
