@@ -37,11 +37,15 @@ json_loops_global = "./logs/loops_global.json"
 
 template_file = "./template/主机扫描报告模板-202104.docx"
 
-# 翻译工具: BaiDu YouDao Tenable
+# 翻译工具: BaiDu YouDao Tenable OpenAI
 # BaiDu :   百度翻译，需要配置key、secret
 # YouDao :  网易翻译，需要配置key、secret
 # Tenable : 官网翻译，无需配置
+# OpenAI :  OpenAI翻译，需要配置key
 translate_tool = "Tenable"
+translate_openai_key = ""  # OpenAI API Key
+translate_openai_model = "gpt-4o-mini"  # 模型名称
+translate_openai_base_url = ""  # API 地址
 translate_status = True
 translate_auto_db = True  # 翻译结果默认添加到db中
 translate_sem = 9  # 协程限制
