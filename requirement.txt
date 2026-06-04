@@ -3,4 +3,5 @@ python-docx
 pywin32
 aiohttp
 IPy
-beautifulsoup4openai
+beautifulsoup4
+openai
