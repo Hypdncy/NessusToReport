@@ -35,6 +35,7 @@ from modle.common.loophole.loopholes import Loopholes
 from modle.common.translate.baidu import TranBaidu
 from modle.common.translate.tenable import TranTenable
 from modle.common.translate.youdao import TranYouDao
+from modle.common.translate.openai import TranOpenAI
 from modle.data.hosts import DataHosts
 from modle.data.loops import DataLoops
 from modle.docx.host import DocxHost
@@ -60,7 +61,8 @@ class Handle(object):
         func_translate_tools = {
             "BaiDu": TranBaidu,
             "YouDao": TranYouDao,
-            "Tenable": TranTenable
+            "Tenable": TranTenable,
+            "OpenAI": TranOpenAI
         }
         func_translate_tools[translate_tool](self.LOOPHOLES).run()
 
